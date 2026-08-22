@@ -6,6 +6,7 @@ from workers.decision.exit_agent import ExitAgent
 from risk.risk_engine import RiskEngine
 from execution.paper_execution import PaperExecution
 from execution.position_manager import PositionManager
+from orchestrator.session_manager import SessionManager
 
 
 class TradingOrchestrator:
@@ -27,6 +28,8 @@ class TradingOrchestrator:
         self.execution = PaperExecution()
 
         self.position_manager = PositionManager()
+
+        self.session_manager = SessionManager(self)
 
         self.selected_strategy = None
 
@@ -299,3 +302,9 @@ class TradingOrchestrator:
             "decision": decision,
             "execution": execution
         }
+
+    def end_of_day(self, prices):
+
+        return self.session_manager.end_of_day(
+            prices
+        )

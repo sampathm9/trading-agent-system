@@ -1,90 +1,79 @@
-from datetime import datetime, time
+from datetime import datetime
 
 
-class TradingSessionManager:
+class SessionManager:
 
-    PRE_MARKET_START = time(9, 0)
-    MARKET_START = time(9, 15)
-    FORCE_EXIT_TIME = time(15, 0)
-    POST_MARKET_TIME = time(15, 30)
+    def __init__(self, orchestrator):
 
-    def __init__(self):
-        self.session_status = "SLEEPING"
-        self.trading_enabled = False
-        self.positions_open = False
+        self.orchestrator = orchestrator
 
-    def get_phase(self, current_time=None):
+    def end_of_day(self, prices):
 
-        if current_time is None:
-            current_time = datetime.now().time()
+        print("\n=== END OF DAY ===")
 
-        if current_time < self.PRE_MARKET_START:
-            return "SLEEP"
+        open_positions = (
+            self.orchestrator.position_manager
+            .get_open_positions()
+        )
 
-        if current_time < self.MARKET_START:
-            return "PRE_MARKET"
+        if not open_positions:
 
-        if current_time < self.FORCE_EXIT_TIME:
-            return "TRADING"
+            print("No open positions.")
 
-        if current_time < self.POST_MARKET_TIME:
-            return "POST_CLOSE"
+            self.orchestrator.stop_trading()
 
-        return "POST_MARKET"
+            return {
+                "status": "NO_POSITIONS",
+                "closed_positions": []
+            }
 
-    def start_pre_market(self):
+        closed_positions = []
 
-        self.session_status = "PRE_MARKET"
-        self.trading_enabled = False
+        for position in open_positions:
 
-        return {
-            "phase": "PRE_MARKET",
-            "trading_enabled": False,
-            "message": "Pre-market analysis started"
-        }
+            symbol = position["symbol"]
 
-    def start_trading(self):
+            exit_price = prices.get(symbol)
 
-        self.session_status = "TRADING"
-        self.trading_enabled = True
+            if exit_price is None:
 
-        return {
-            "phase": "TRADING",
-            "trading_enabled": True,
-            "message": "Trading session started"
-        }
+                print(
+                    "No closing price for:",
+                    symbol
+                )
 
-    def force_close(self):
+                continue
 
-        self.trading_enabled = False
-        self.positions_open = False
-        self.session_status = "FORCE_EXIT"
+            closed = (
+                self.orchestrator.position_manager
+                .close_position(
+                    symbol,
+                    exit_price
+                )
+            )
 
-        return {
-            "phase": "FORCE_EXIT",
-            "trading_enabled": False,
-            "positions_closed": True,
-            "message": "All positions must be closed"
-        }
+            if closed is not None:
 
-    def start_post_market(self):
+                closed_positions.append(
+                    closed
+                )
 
-        self.trading_enabled = False
-        self.session_status = "POST_MARKET"
+                print(
+                    "Closed:",
+                    symbol,
+                    "@",
+                    exit_price
+                )
+
+        self.orchestrator.stop_trading()
 
         return {
-            "phase": "POST_MARKET",
-            "trading_enabled": False,
-            "message": "Post-market analysis started"
-        }
-
-    def sleep(self):
-
-        self.trading_enabled = False
-        self.session_status = "SLEEPING"
-
-        return {
-            "phase": "SLEEP",
-            "trading_enabled": False,
-            "message": "Trading agent sleeping"
+            "status": "COMPLETED",
+            "closed_positions": closed_positions,
+            "realized_pnl": (
+                self.orchestrator
+                .position_manager
+                .get_realized_pnl()
+            ),
+            "completed_at": datetime.now().isoformat()
         }
