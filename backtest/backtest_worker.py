@@ -1,69 +1,73 @@
 class BacktestWorker:
 
-    def run(self, candles, strategy):
+    def run_momentum_backtest(self, candles):
 
-        if not candles:
+        if len(candles) < 2:
             return {
-                "status": "FAILED",
-                "reason": "No candle data"
+                "name": "Momentum",
+                "trades": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0.0,
+                "total_pnl": 0.0,
+                "score": 0.0,
+                "confidence": 0.0
             }
 
-        trades = []
+        trades = 0
         wins = 0
         losses = 0
         total_pnl = 0.0
 
         for i in range(1, len(candles)):
 
-            previous_close = float(candles[i - 1]["close"])
-            current_close = float(candles[i]["close"])
-
-            signal = strategy.generate_signal(
-                previous_close,
-                current_close
+            previous_close = float(
+                candles[i - 1]["close"]
             )
 
-            if signal == "BUY":
-                pnl = current_close - previous_close
+            current_close = float(
+                candles[i]["close"]
+            )
 
-            elif signal == "SELL":
-                pnl = previous_close - current_close
+            if current_close > previous_close:
 
-            else:
-                pnl = 0.0
+                entry_price = current_close
 
-            if signal in ("BUY", "SELL"):
+                if i + 1 < len(candles):
 
-                trades.append({
-                    "index": i,
-                    "signal": signal,
-                    "entry": previous_close,
-                    "exit": current_close,
-                    "pnl": pnl
-                })
+                    exit_price = float(
+                        candles[i + 1]["close"]
+                    )
 
-                total_pnl += pnl
+                    pnl = exit_price - entry_price
 
-                if pnl > 0:
-                    wins += 1
+                    trades += 1
+                    total_pnl += pnl
 
-                elif pnl < 0:
-                    losses += 1
+                    if pnl > 0:
+                        wins += 1
+                    else:
+                        losses += 1
 
-        total_trades = wins + losses
-
-        if total_trades > 0:
-            win_rate = (wins / total_trades) * 100
+        if trades > 0:
+            win_rate = wins / trades
         else:
             win_rate = 0.0
 
+        score = win_rate
+
+        confidence = min(
+            1.0,
+            win_rate
+        )
+
         return {
-            "status": "COMPLETED",
-            "strategy": strategy.name,
+            "name": "Momentum",
             "trades": trades,
-            "total_trades": total_trades,
             "wins": wins,
             "losses": losses,
-            "win_rate": win_rate,
-            "total_pnl": total_pnl
+            "win_rate": round(win_rate, 4),
+            "total_pnl": round(total_pnl, 2),
+            "score": round(score, 4),
+            "confidence": round(confidence, 4)
         }
