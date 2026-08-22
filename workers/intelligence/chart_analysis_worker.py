@@ -14,7 +14,6 @@ class ChartAnalysisWorker:
 
         previous = closes[-2]
         current = closes[-1]
-
         momentum = current - previous
 
         if current > previous:
@@ -24,15 +23,14 @@ class ChartAnalysisWorker:
         else:
             trend = 'SIDEWAYS'
 
-        returns = []
+        changes = []
 
         for i in range(1, len(closes)):
-            change = closes[i] - closes[i - 1]
-            returns.append(change)
+            changes.append(closes[i] - closes[i - 1])
 
-        if returns:
-            average = sum(returns) / len(returns)
-            variance = sum((x - average) ** 2 for x in returns) / len(returns)
+        if changes:
+            average = sum(changes) / len(changes)
+            variance = sum((x - average) ** 2 for x in changes) / len(changes)
             volatility = variance ** 0.5
         else:
             volatility = 0.0
