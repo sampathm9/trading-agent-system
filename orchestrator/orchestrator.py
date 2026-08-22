@@ -1,47 +1,125 @@
-from orchestrator.session_manager import TradingSessionManager
-from workers.decision.exit_agent import ExitAgent
-from execution.paper_execution import PaperExecution
-from execution.position_manager import PositionManager
+from backtest.backtest_worker import BacktestWorker
+from workers.strategy.strategy_selector import StrategySelector
+from workers.intelligence.market_intelligence_worker import MarketIntelligenceWorker
+from workers.decision.decision_engine import DecisionEngine
 from risk.risk_engine import RiskEngine
+from execution.paper_execution import PaperExecution
 
 
 class TradingOrchestrator:
 
     def __init__(self):
 
-        self.session = TradingSessionManager()
+        self.backtest = BacktestWorker()
+
+        self.strategy_selector = StrategySelector()
+
+        self.intelligence = MarketIntelligenceWorker()
+
+        self.decision_engine = DecisionEngine()
+
+        self.risk_engine = RiskEngine()
 
         self.execution = PaperExecution()
 
-        self.positions = PositionManager()
-
-        self.exit_agent = ExitAgent()
-
-        self.risk = RiskEngine()
-
-        self.daily_pnl = 0
+        self.selected_strategy = None
 
         self.running = False
 
-    def start_pre_market(self):
-
-        result = self.session.start_pre_market()
-
-        print("\n=== PRE-MARKET ===")
-        print(result["message"])
-
-        return result
-
     def start_trading(self):
 
-        result = self.session.start_trading()
+        print("\n=== TRADING SESSION ===")
 
         self.running = True
 
-        print("\n=== TRADING SESSION ===")
-        print(result["message"])
+        print("Trading session started")
 
-        return result
+    def stop_trading(self):
+
+        self.running = False
+
+        print("Trading session stopped")
+
+    def prepare_strategy(self, historical_candles):
+
+        print("\n=== BACKTEST ===")
+
+        result = self.backtest.run_momentum_backtest(
+            historical_candles
+        )
+
+        print("Backtest result:")
+        print(result)
+
+        selected = self.strategy_selector.select(
+            [result]
+        )
+
+        if selected is None:
+
+            print("No strategy passed validation")
+
+            self.selected_strategy = None
+
+            return None
+
+        self.selected_strategy = selected
+
+        print(
+            "Selected strategy:",
+            selected["name"]
+        )
+
+        return selected
+
+    def analyze_market(
+        self,
+        candles,
+        market_text=""
+    ):
+
+        print("\n=== MARKET INTELLIGENCE ===")
+
+        analysis = self.intelligence.analyze(
+            candles,
+            market_text
+        )
+
+        print(
+            "Market bias:",
+            analysis["market_bias"]
+        )
+
+        print(
+            "Evidence score:",
+            analysis["evidence_score"]
+        )
+
+        return analysis
+
+    def make_decision(
+        self,
+        analysis
+    ):
+
+        print("\n=== DECISION ===")
+
+        decision = self.decision_engine.decide(
+            analysis,
+            self.selected_strategy
+        )
+
+        print(
+            "Action:",
+            decision["action"]
+        )
+
+        print(
+            "Confidence:",
+            decision["confidence"]
+        )
+
+        return decision
 
     def execute_trade(
         self,
@@ -51,189 +129,84 @@ class TradingOrchestrator:
         price
     ):
 
-        if not self.session.trading_enabled:
+        print("\n=== RISK CHECK ===")
 
-            return {
-                "status": "REJECTED",
-                "reason": "Trading session is not active"
-            }
-
-        risk_result = self.risk.validate(
-            decision=decision,
+        risk_result = self.risk_engine.validate(
+            decision,
             quantity=quantity,
-            daily_pnl=self.daily_pnl
-        )
-
-        print(
-            "Risk:",
-            risk_result["reason"]
+            daily_pnl=0
         )
 
         if not risk_result["approved"]:
+
+            print(
+                "Risk rejected:",
+                risk_result["reason"]
+            )
 
             return {
                 "status": "RISK_REJECTED",
                 "reason": risk_result["reason"]
             }
 
+        print("Risk: Risk checks passed")
+
+        print("\n=== PAPER EXECUTION ===")
+
         result = self.execution.execute(
-            decision=decision,
-            symbol=symbol,
-            quantity=quantity,
-            price=price
-        )
-
-        if result["status"] != "EXECUTED":
-            return result
-
-        position = result["position"]
-
-        self.positions.add_position(
-            symbol=symbol,
-            side=position["side"],
-            quantity=position["quantity"],
-            entry_price=position["entry_price"]
-        )
-
-        print(
-            f"TRADE: {position['side']} "
-            f"{symbol} @ {position['entry_price']}"
+            decision,
+            symbol,
+            quantity,
+            price
         )
 
         return result
 
-    def monitor_position(
+    def run_cycle(
         self,
-        symbol,
-        current_price
+        historical_candles,
+        market_candles,
+        symbol="NIFTY",
+        quantity=1
     ):
 
-        position = self.positions.get_position(symbol)
+        if not self.running:
 
-        if position is None:
+            raise RuntimeError(
+                "Trading session is not running"
+            )
+
+        self.prepare_strategy(
+            historical_candles
+        )
+
+        if self.selected_strategy is None:
 
             return {
-                "status": "NO_POSITION"
+                "status": "NO_STRATEGY"
             }
 
-        self.positions.update_price(
+        analysis = self.analyze_market(
+            market_candles
+        )
+
+        decision = self.make_decision(
+            analysis
+        )
+
+        current_price = float(
+            market_candles[-1]["close"]
+        )
+
+        execution = self.execute_trade(
+            decision,
             symbol,
+            quantity,
             current_price
         )
 
-        exit_decision = self.exit_agent.evaluate(
-            entry_price=position["entry_price"],
-            current_price=current_price,
-            side=position["side"]
-        )
-
-        if exit_decision["exit"]:
-
-            return self.exit_position(
-                symbol,
-                current_price,
-                exit_decision["reason"]
-            )
-
         return {
-            "status": "HOLD",
-            "position": self.positions.get_position(symbol)
+            "analysis": analysis,
+            "decision": decision,
+            "execution": execution
         }
-
-    def exit_position(
-        self,
-        symbol,
-        price,
-        reason="Manual exit"
-    ):
-
-        result = self.execution.exit_position(
-            symbol,
-            price
-        )
-
-        if result["status"] != "CLOSED":
-            return result
-
-        position = self.positions.close_position(
-            symbol,
-            price
-        )
-
-        self.daily_pnl += position["realized_pnl"]
-
-        print(
-            f"EXIT: {symbol} @ {price} | "
-            f"Reason: {reason} | "
-            f"P&L: {position['realized_pnl']}"
-        )
-
-        return {
-            "status": "CLOSED",
-            "reason": reason,
-            "position": position
-        }
-
-    def force_close_all(self):
-
-        print("\n=== FORCE CLOSE ===")
-
-        open_positions = self.positions.get_open_positions()
-
-        results = []
-
-        for position in open_positions:
-
-            symbol = position["symbol"]
-            current_price = position["current_price"]
-
-            result = self.execution.exit_position(
-                symbol,
-                current_price
-            )
-
-            if result["status"] == "CLOSED":
-
-                closed = self.positions.close_position(
-                    symbol,
-                    current_price
-                )
-
-                self.daily_pnl += closed["realized_pnl"]
-
-                results.append(closed)
-
-                print(
-                    f"FORCED EXIT: {symbol} "
-                    f"@ {current_price} | "
-                    f"P&L: {closed['realized_pnl']}"
-                )
-
-        self.session.force_close()
-
-        self.running = False
-
-        return results
-
-    def post_market(self):
-
-        result = self.session.start_post_market()
-
-        print("\n=== POST-MARKET ===")
-        print(result["message"])
-
-        print(
-            "Realized P&L:",
-            self.daily_pnl
-        )
-
-        return result
-
-    def sleep(self):
-
-        result = self.session.sleep()
-
-        print("\n=== SLEEP ===")
-        print(result["message"])
-
-        return result
