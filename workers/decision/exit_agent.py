@@ -1,94 +1,40 @@
 class ExitAgent:
 
-    def __init__(
-        self,
-        stop_loss_percent=0.02,
-        target_percent=0.04
-    ):
-        self.stop_loss_percent = stop_loss_percent
-        self.target_percent = target_percent
-
     def evaluate(
         self,
-        entry_price,
         current_price,
+        entry_price,
         side,
         strategy_exit=False,
-        market_regime="NORMAL",
+        market_regime="UNKNOWN",
         force_exit=False
     ):
 
         if force_exit:
             return {
-                "exit": True,
-                "reason": "End of trading session"
+                "action": "EXIT",
+                "reason": "Force exit requested"
             }
 
         if strategy_exit:
             return {
-                "exit": True,
+                "action": "EXIT",
                 "reason": "Strategy exit signal"
             }
 
-        if market_regime == "DANGEROUS":
+        if side == "BUY" and market_regime == "BEARISH":
             return {
-                "exit": True,
-                "reason": "Dangerous market regime"
+                "action": "EXIT",
+                "reason": "Market changed to bearish"
             }
 
-        if side == "BUY":
-
-            stop_price = (
-                entry_price
-                * (1 - self.stop_loss_percent)
-            )
-
-            target_price = (
-                entry_price
-                * (1 + self.target_percent)
-            )
-
-            if current_price <= stop_price:
-                return {
-                    "exit": True,
-                    "reason": "Stop loss reached",
-                    "exit_price": current_price
-                }
-
-            if current_price >= target_price:
-                return {
-                    "exit": True,
-                    "reason": "Target reached",
-                    "exit_price": current_price
-                }
-
-        elif side == "SELL":
-
-            stop_price = (
-                entry_price
-                * (1 + self.stop_loss_percent)
-            )
-
-            target_price = (
-                entry_price
-                * (1 - self.target_percent)
-            )
-
-            if current_price >= stop_price:
-                return {
-                    "exit": True,
-                    "reason": "Stop loss reached",
-                    "exit_price": current_price
-                }
-
-            if current_price <= target_price:
-                return {
-                    "exit": True,
-                    "reason": "Target reached",
-                    "exit_price": current_price
-                }
+        if side == "SELL" and market_regime == "BULLISH":
+            return {
+                "action": "EXIT",
+                "reason": "Market changed to bullish"
+            }
 
         return {
-            "exit": False,
-            "reason": "Position remains open"
+            "action": "HOLD",
+            "reason": "No exit condition"
         }

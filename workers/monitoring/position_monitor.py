@@ -1,62 +1,63 @@
 class PositionMonitor:
 
-    def __init__(self, stop_loss=100.0, take_profit=200.0):
-        self.stop_loss = stop_loss
-        self.take_profit = take_profit
+    def __init__(self):
+        self.positions = {}
 
-    def check(self, position, current_price, strategy_exit=False, market_regime='UNKNOWN', force_exit=False):
+    def register_position(self, position):
+        symbol = position["symbol"]
+
+        self.positions[symbol] = position
+
+        return position
+
+    def update_price(self, symbol, current_price):
+        position = self.positions.get(symbol)
 
         if position is None:
-            return {
-                'action': 'NONE',
-                'reason': 'No open position'
-            }
+            return None
 
-        entry_price = position['entry_price']
-        side = position['side']
+        position["current_price"] = float(current_price)
 
-        if side == 'BUY':
-            pnl = current_price - entry_price
+        entry_price = float(
+            position["entry_price"]
+        )
+
+        quantity = int(
+            position["quantity"]
+        )
+
+        side = position["side"]
+
+        if side == "BUY":
+            pnl = (
+                current_price - entry_price
+            ) * quantity
+
+        elif side == "SELL":
+            pnl = (
+                entry_price - current_price
+            ) * quantity
+
         else:
-            pnl = entry_price - current_price
+            pnl = 0.0
 
-        if force_exit:
-            return {
-                'action': 'EXIT',
-                'reason': 'Mandatory end-of-day exit',
-                'pnl': pnl
-            }
+        position["unrealized_pnl"] = round(
+            pnl,
+            2
+        )
 
-        if pnl <= -self.stop_loss:
-            return {
-                'action': 'EXIT',
-                'reason': 'Stop-loss triggered',
-                'pnl': pnl
-            }
+        return position
 
-        if pnl >= self.take_profit:
-            return {
-                'action': 'EXIT',
-                'reason': 'Take-profit triggered',
-                'pnl': pnl
-            }
+    def get_position(self, symbol):
+        return self.positions.get(symbol)
 
-        if strategy_exit:
-            return {
-                'action': 'EXIT',
-                'reason': 'Strategy exit signal',
-                'pnl': pnl
-            }
+    def remove_position(self, symbol):
+        return self.positions.pop(
+            symbol,
+            None
+        )
 
-        if market_regime == 'VOLATILE_RANGE':
-            return {
-                'action': 'EXIT',
-                'reason': 'Risky market regime',
-                'pnl': pnl
-            }
-
-        return {
-            'action': 'HOLD',
-            'reason': 'Position conditions acceptable',
-            'pnl': pnl
-        }
+    def all_positions(self):
+        return list(
+            self.positions.values()
+        )
