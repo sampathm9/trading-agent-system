@@ -5,61 +5,47 @@ class MarketIntelligenceWorker:
         if not candles:
             return {
                 "market_bias": "UNKNOWN",
-                "trend": "UNKNOWN",
-                "momentum": 0,
-                "evidence_score": 0,
-                "reason": "No candle data"
+                "evidence_score": 0.0,
+                "reason": "No market data"
             }
 
-        closes = [float(candle["close"]) for candle in candles]
+        closes = [
+            float(candle["close"])
+            for candle in candles
+        ]
+
+        if len(closes) < 2:
+            return {
+                "market_bias": "NEUTRAL",
+                "evidence_score": 0.0,
+                "reason": "Not enough candles"
+            }
 
         first_close = closes[0]
         last_close = closes[-1]
 
-        if last_close > first_close:
-            trend = "BULLISH"
-        elif last_close < first_close:
-            trend = "BEARISH"
+        change = last_close - first_close
+
+        if change > 0:
+            bias = "BULLISH"
+        elif change < 0:
+            bias = "BEARISH"
         else:
-            trend = "SIDEWAYS"
+            bias = "NEUTRAL"
 
-        if len(closes) >= 2:
-            momentum = last_close - closes[-2]
-        else:
-            momentum = 0
-
-        evidence_score = 0
-
-        if trend == "BULLISH":
-            evidence_score += 1
-
-        if trend == "BEARISH":
-            evidence_score += 1
-
-        if momentum > 0:
-            evidence_score += 1
-
-        elif momentum < 0:
-            evidence_score += 1
-
-        if trend == "BULLISH":
-            market_bias = "BULLISH"
-
-        elif trend == "BEARISH":
-            market_bias = "BEARISH"
-
-        else:
-            market_bias = "NEUTRAL"
+        evidence_score = abs(change) / first_close
 
         return {
-            "market_bias": market_bias,
-            "trend": trend,
-            "momentum": momentum,
-            "evidence_score": evidence_score,
-            "last_price": last_close,
-            "market_text": market_text,
-            "reason": (
-                f"Price moved from {first_close} "
-                f"to {last_close}"
-            )
+            "market_bias": bias,
+            "evidence_score": round(
+                evidence_score,
+                4
+            ),
+            "first_close": first_close,
+            "last_close": last_close,
+            "price_change": round(
+                change,
+                2
+            ),
+            "market_text": market_text
         }
