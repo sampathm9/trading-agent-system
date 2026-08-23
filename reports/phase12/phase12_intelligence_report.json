@@ -1,0 +1,47 @@
+{
+  "phase": 12,
+  "name": "Intelligence / AI layer",
+  "status": "PASS",
+  "candles": 40,
+  "technical": {
+    "price": 140.0,
+    "sma_fast": 138.0,
+    "sma_slow": 135.5,
+    "ema_fast": 138.0,
+    "ema_slow": 135.5,
+    "rsi": 100.0,
+    "atr": 2.0,
+    "momentum": 3.7037037037037033,
+    "volatility": 0.0158931940357874,
+    "trend_score": 1.0,
+    "direction": "BULLISH"
+  },
+  "regime": {
+    "regime": "BULL_TREND",
+    "volatility_state": "LOW",
+    "momentum_state": "POSITIVE",
+    "trend_score": 1.0
+  },
+  "sentiment": {
+    "score": 1.0,
+    "label": "POSITIVE",
+    "articles": 2,
+    "positive_hits": 5,
+    "negative_hits": 0
+  },
+  "ai": {
+    "signal": "BUY",
+    "score": 1.0,
+    "confidence": 1.0,
+    "technical_score": 1.0,
+    "regime_score": 1.0,
+    "sentiment_score": 1.0,
+    "explanation": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=POSITIVE; RSI=100.00; momentum=3.70%."
+  },
+  "strategy_signal": {
+    "signal": "BUY",
+    "confidence": 1.0,
+    "score": 1.0,
+    "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=POSITIVE; RSI=100.00; momentum=3.70%."
+  }
+}
