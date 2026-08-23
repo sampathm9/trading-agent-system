@@ -2,23 +2,39 @@ class TrendWorker:
 
     def analyze(self, candles, short_period=5, long_period=10):
 
-        closes = [float(c['close']) for c in candles]
+        closes = [
+            float(c["close"])
+            for c in candles
+        ]
 
         if len(closes) < long_period:
-            return {'trend': 'UNKNOWN', 'short_average': None, 'long_average': None}
+            return {
+                "trend": "UNKNOWN",
+                "short_average": None,
+                "long_average": None
+            }
 
-        short_average = sum(closes[-short_period:]) / short_period
-        long_average = sum(closes[-long_period:]) / long_period
+        short_average = (
+            sum(closes[-short_period:])
+            / short_period
+        )
+
+        long_average = (
+            sum(closes[-long_period:])
+            / long_period
+        )
 
         if short_average > long_average:
-            trend = 'BULLISH'
+            trend = "BULLISH"
+
         elif short_average < long_average:
-            trend = 'BEARISH'
+            trend = "BEARISH"
+
         else:
-            trend = 'SIDEWAYS'
+            trend = "SIDEWAYS"
 
         return {
-            'trend': trend,
-            'short_average': short_average,
-            'long_average': long_average
+            "trend": trend,
+            "short_average": short_average,
+            "long_average": long_average
         }

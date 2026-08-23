@@ -1,38 +1,134 @@
 [
-    {
-        "open": 100,
-        "high": 105,
-        "low": 99,
-        "close": 103
-    },
-    {
-        "open": 103,
-        "high": 108,
-        "low": 102,
-        "close": 107
-    },
-    {
-        "open": 107,
-        "high": 110,
-        "low": 105,
-        "close": 109
-    },
-    {
-        "open": 109,
-        "high": 111,
-        "low": 106,
-        "close": 107
-    },
-    {
-        "open": 107,
-        "high": 112,
-        "low": 106,
-        "close": 110
-    },
-    {
-        "open": 110,
-        "high": 115,
-        "low": 109,
-        "close": 114
-    }
+  {
+    "open": 100,
+    "high": 103,
+    "low": 99,
+    "close": 102
+  },
+  {
+    "open": 102,
+    "high": 105,
+    "low": 101,
+    "close": 104
+  },
+  {
+    "open": 104,
+    "high": 107,
+    "low": 103,
+    "close": 106
+  },
+  {
+    "open": 106,
+    "high": 109,
+    "low": 105,
+    "close": 108
+  },
+  {
+    "open": 108,
+    "high": 111,
+    "low": 107,
+    "close": 110
+  },
+  {
+    "open": 110,
+    "high": 113,
+    "low": 109,
+    "close": 112
+  },
+  {
+    "open": 112,
+    "high": 115,
+    "low": 111,
+    "close": 114
+  },
+  {
+    "open": 114,
+    "high": 117,
+    "low": 113,
+    "close": 116
+  },
+  {
+    "open": 116,
+    "high": 119,
+    "low": 115,
+    "close": 118
+  },
+  {
+    "open": 118,
+    "high": 121,
+    "low": 117,
+    "close": 120
+  },
+  {
+    "open": 120,
+    "high": 123,
+    "low": 119,
+    "close": 122
+  },
+  {
+    "open": 122,
+    "high": 125,
+    "low": 121,
+    "close": 124
+  },
+  {
+    "open": 124,
+    "high": 127,
+    "low": 123,
+    "close": 126
+  },
+  {
+    "open": 126,
+    "high": 129,
+    "low": 125,
+    "close": 128
+  },
+  {
+    "open": 128,
+    "high": 131,
+    "low": 127,
+    "close": 130
+  },
+  {
+    "open": 130,
+    "high": 133,
+    "low": 129,
+    "close": 132
+  },
+  {
+    "open": 132,
+    "high": 135,
+    "low": 131,
+    "close": 134
+  },
+  {
+    "open": 134,
+    "high": 137,
+    "low": 133,
+    "close": 136
+  },
+  {
+    "open": 136,
+    "high": 139,
+    "low": 135,
+    "close": 138
+  },
+  {
+    "open": 138,
+    "high": 141,
+    "low": 137,
+    "close": 140
+  },
+  {
+    "open": 140,
+    "high": 143,
+    "low": 139,
+    "close": 142
+  },
+  {
+    "open": 142,
+    "high": 145,
+    "low": 141,
+    "close": 144
+  }
 ]

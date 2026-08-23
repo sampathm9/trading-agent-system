@@ -1,6 +1,8 @@
 from datetime import datetime
+
 from execution.paper_broker import PaperBroker
 from risk.guardian import RiskGuardian
+
 
 class ExecutionWorker:
 
@@ -8,14 +10,21 @@ class ExecutionWorker:
         self.broker = broker or PaperBroker()
         self.risk_guardian = risk_guardian or RiskGuardian()
 
-    def execute(self, decision, symbol, quantity, price, daily_loss=0.0):
+    def execute(
+        self,
+        decision,
+        symbol,
+        quantity,
+        price,
+        daily_loss=0.0
+    ):
 
-        action = decision.get('action')
+        action = decision.get("action")
 
-        if action not in ('BUY', 'SELL'):
+        if action not in ("BUY", "SELL"):
             return {
-                'status': 'SKIPPED',
-                'reason': 'No executable action'
+                "status": "SKIPPED",
+                "reason": "NO_EXECUTABLE_ACTION"
             }
 
         approved = self.risk_guardian.approve(
@@ -25,8 +34,8 @@ class ExecutionWorker:
 
         if not approved:
             return {
-                'status': 'REJECTED',
-                'reason': 'Risk Guardian rejected order'
+                "status": "REJECTED",
+                "reason": "RISK_GUARDIAN_REJECTED"
             }
 
         order = self.broker.place_order(
@@ -37,7 +46,7 @@ class ExecutionWorker:
         )
 
         return {
-            'status': 'EXECUTED',
-            'timestamp': datetime.now().isoformat(),
-            'order': order
+            "status": "EXECUTED",
+            "timestamp": datetime.now().isoformat(),
+            "order": order
         }
