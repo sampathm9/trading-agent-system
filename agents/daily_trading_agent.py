@@ -1,6 +1,7 @@
 from workers.data.market_data_worker import MarketDataWorker
 from workers.trading.trading_cycle_worker import TradingCycleWorker
 from workers.backtest.backtest_worker import BacktestWorker
+from workers.execution.execution_worker import ExecutionWorker
 
 
 class DailyTradingAgent:
@@ -9,7 +10,8 @@ class DailyTradingAgent:
         self,
         market_data_worker=None,
         trading_cycle_worker=None,
-        backtest_worker=None
+        backtest_worker=None,
+        execution_worker=None
     ):
 
         self.market_data_worker = (
@@ -17,9 +19,16 @@ class DailyTradingAgent:
             or MarketDataWorker()
         )
 
+        self.execution_worker = (
+            execution_worker
+            or ExecutionWorker()
+        )
+
         self.trading_cycle_worker = (
             trading_cycle_worker
-            or TradingCycleWorker()
+            or TradingCycleWorker(
+                execution_worker=self.execution_worker
+            )
         )
 
         self.backtest_worker = (
@@ -29,20 +38,40 @@ class DailyTradingAgent:
 
         self.running = False
 
+    # -------------------------------------------------
+    # MARKET DATA
+    # -------------------------------------------------
+
     def load_market_data(self, symbol, candles):
 
-        data = self.market_data_worker.load_candles(
+        return self.market_data_worker.load_candles(
             symbol,
             candles
         )
-
-        return data
 
     def get_latest_price(self, symbol):
 
         return self.market_data_worker.latest_price(
             symbol
         )
+
+    # -------------------------------------------------
+    # POSITION
+    # -------------------------------------------------
+
+    def get_position(self, symbol):
+
+        return self.execution_worker.broker.get_position(
+            symbol
+        )
+
+    def get_realized_pnl(self):
+
+        return self.execution_worker.broker.get_realized_pnl()
+
+    # -------------------------------------------------
+    # TRADING CYCLE
+    # -------------------------------------------------
 
     def run_trading_cycle(
         self,
@@ -67,6 +96,8 @@ class DailyTradingAgent:
             symbol
         )
 
+        position = self.get_position(symbol)
+
         result = self.trading_cycle_worker.run(
             candles=candles,
             symbol=symbol,
@@ -74,10 +105,50 @@ class DailyTradingAgent:
             price=price,
             short_period=short_period,
             long_period=long_period,
-            daily_loss=daily_loss
+            daily_loss=daily_loss,
+            position=position
         )
 
         return result
+
+    # -------------------------------------------------
+    # EOD EXIT
+    # -------------------------------------------------
+
+        # -------------------------------------------------
+    # EOD EXIT
+    # -------------------------------------------------
+
+    def close_all_positions(self, current_prices):
+
+        print()
+        print("[DAILY AGENT] EOD position exit")
+
+        closing_orders = (
+            self.execution_worker.broker.close_all_positions(
+                current_prices=current_prices
+            )
+        )
+
+        return {
+            "status": "COMPLETED",
+            "closing_orders": closing_orders,
+            "realized_pnl": (
+                self.execution_worker.broker.get_realized_pnl()
+            )
+        }
+
+    def run_eod_exit(self, current_prices=None):
+
+        if current_prices is None:
+            current_prices = {}
+
+        return self.close_all_positions(
+            current_prices=current_prices
+        )
+    # -------------------------------------------------
+    # BACKTEST
+    # -------------------------------------------------
 
     def run_backtest(
         self,
@@ -100,7 +171,7 @@ class DailyTradingAgent:
                 "reason": "NO_MARKET_DATA"
             }
 
-        result = self.backtest_worker.run(
+        return self.backtest_worker.run(
             candles=candles,
             symbol=symbol,
             quantity=quantity,
@@ -111,7 +182,9 @@ class DailyTradingAgent:
             max_daily_loss=max_daily_loss
         )
 
-        return result
+    # -------------------------------------------------
+    # LIFECYCLE
+    # -------------------------------------------------
 
     def start(self):
 
