@@ -1,0 +1,197 @@
+{
+  "summary": {
+    "status": "COMPLETED",
+    "timestamp": "2026-08-23T19:21:31.942386",
+    "entry_status": "EXECUTED",
+    "monitor_events": 2,
+    "eod_status": "NO_POSITION",
+    "realized_pnl": 6.450000000000017,
+    "daily_loss": 0.0,
+    "trade_count": 1,
+    "event_count": 8
+  },
+  "session": {
+    "status": "COMPLETED",
+    "entry": {
+      "status": "EXECUTED",
+      "trend": {
+        "trend": "BULLISH",
+        "short_average": 127.0,
+        "long_average": 124.5
+      },
+      "decision": {
+        "trend": "BULLISH",
+        "action": "BUY",
+        "confidence": 1.0
+      },
+      "execution": {
+        "status": "EXECUTED",
+        "timestamp": "2026-08-23T19:21:31.931930",
+        "order": {
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "quantity": 1,
+          "price": 129.0,
+          "status": "FILLED"
+        }
+      }
+    },
+    "monitor": [
+      {
+        "status": "HOLD",
+        "entry_price": 129.0,
+        "current_price": 130.29,
+        "stop_price": 126.42,
+        "target_price": 134.16,
+        "unrealized_pnl": 1.289999999999992
+      },
+      {
+        "status": "TAKE_PROFIT",
+        "order": {
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "quantity": 1,
+          "price": 135.45000000000002,
+          "status": "FILLED",
+          "realized_pnl": 6.450000000000017
+        },
+        "pnl": 6.450000000000017
+      }
+    ],
+    "eod": {
+      "status": "NO_POSITION",
+      "realized_pnl": 6.450000000000017
+    },
+    "final_state": {
+      "running": true,
+      "entries_enabled": false,
+      "current_date": "2026-08-24",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "position": null,
+      "realized_pnl": 6.450000000000017,
+      "daily_loss": 0.0,
+      "max_daily_loss": 1000.0,
+      "trade_count": 1,
+      "event_count": 6
+    }
+  },
+  "events": [
+    {
+      "timestamp": "2026-08-23T19:21:31.928323",
+      "event": "MARKET_CLOSED",
+      "date": "2026-08-23",
+      "reason": "WEEKEND"
+    },
+    {
+      "timestamp": "2026-08-23T19:21:31.929324",
+      "event": "PIPELINE_STARTED",
+      "date": "2026-08-24"
+    },
+    {
+      "timestamp": "2026-08-23T19:21:31.930647",
+      "event": "STRATEGY_COMPLETED",
+      "result": {
+        "status": "COMPLETED",
+        "trend": {
+          "status": "COMPLETED",
+          "trend": "BULLISH",
+          "confidence": 1.0,
+          "price": 129.0,
+          "short_sma": 127.0,
+          "long_sma": 124.5,
+          "momentum": 0.04032258064516129,
+          "bullish_score": 3,
+          "bearish_score": 0
+        },
+        "signal": {
+          "timestamp": "2026-08-23T19:21:31.930614",
+          "action": "BUY",
+          "trend": "BULLISH",
+          "confidence": 1.0,
+          "reason": "BULLISH_TREND"
+        },
+        "config": {
+          "short_period": 5,
+          "long_period": 10,
+          "momentum_period": 5,
+          "minimum_confidence": 0.6
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-23T19:21:31.932130",
+      "event": "ENTRY_CYCLE",
+      "result": {
+        "status": "EXECUTED",
+        "trend": {
+          "trend": "BULLISH",
+          "short_average": 127.0,
+          "long_average": 124.5
+        },
+        "decision": {
+          "trend": "BULLISH",
+          "action": "BUY",
+          "confidence": 1.0
+        },
+        "execution": {
+          "status": "EXECUTED",
+          "timestamp": "2026-08-23T19:21:31.931930",
+          "order": {
+            "symbol": "NIFTY",
+            "side": "BUY",
+            "quantity": 1,
+            "price": 129.0,
+            "status": "FILLED"
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-23T19:21:31.932719",
+      "event": "POSITION_MONITOR",
+      "price": 130.29,
+      "result": {
+        "status": "HOLD",
+        "entry_price": 129.0,
+        "current_price": 130.29,
+        "stop_price": 126.42,
+        "target_price": 134.16,
+        "unrealized_pnl": 1.289999999999992
+      }
+    },
+    {
+      "timestamp": "2026-08-23T19:21:31.935001",
+      "event": "POSITION_MONITOR",
+      "price": 135.45000000000002,
+      "result": {
+        "status": "TAKE_PROFIT",
+        "order": {
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "quantity": 1,
+          "price": 135.45000000000002,
+          "status": "FILLED",
+          "realized_pnl": 6.450000000000017
+        },
+        "pnl": 6.450000000000017
+      }
+    },
+    {
+      "timestamp": "2026-08-23T19:21:31.936393",
+      "event": "NEW_ENTRIES_STOPPED",
+      "result": {
+        "status": "COMPLETED"
+      }
+    },
+    {
+      "timestamp": "2026-08-23T19:21:31.938625",
+      "event": "EOD_EXIT",
+      "price": 135.45000000000002,
+      "result": {
+        "status": "NO_POSITION",
+        "realized_pnl": 6.450000000000017
+      }
+    }
+  ]
+}
