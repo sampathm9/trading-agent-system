@@ -1,0 +1,138 @@
+{
+  "symbol": "NIFTY",
+  "candle_count": 22,
+  "candles": [
+    {
+      "open": 100,
+      "high": 101,
+      "low": 99,
+      "close": 100
+    },
+    {
+      "open": 101,
+      "high": 102,
+      "low": 100,
+      "close": 101
+    },
+    {
+      "open": 102,
+      "high": 103,
+      "low": 101,
+      "close": 102
+    },
+    {
+      "open": 103,
+      "high": 104,
+      "low": 102,
+      "close": 103
+    },
+    {
+      "open": 104,
+      "high": 105,
+      "low": 103,
+      "close": 104
+    },
+    {
+      "open": 105,
+      "high": 106,
+      "low": 104,
+      "close": 105
+    },
+    {
+      "open": 106,
+      "high": 107,
+      "low": 105,
+      "close": 106
+    },
+    {
+      "open": 107,
+      "high": 108,
+      "low": 106,
+      "close": 107
+    },
+    {
+      "open": 108,
+      "high": 109,
+      "low": 107,
+      "close": 108
+    },
+    {
+      "open": 109,
+      "high": 110,
+      "low": 108,
+      "close": 109
+    },
+    {
+      "open": 110,
+      "high": 111,
+      "low": 109,
+      "close": 110
+    },
+    {
+      "open": 111,
+      "high": 112,
+      "low": 110,
+      "close": 111
+    },
+    {
+      "open": 112,
+      "high": 113,
+      "low": 111,
+      "close": 112
+    },
+    {
+      "open": 113,
+      "high": 114,
+      "low": 112,
+      "close": 113
+    },
+    {
+      "open": 114,
+      "high": 115,
+      "low": 113,
+      "close": 114
+    },
+    {
+      "open": 115,
+      "high": 116,
+      "low": 114,
+      "close": 115
+    },
+    {
+      "open": 116,
+      "high": 117,
+      "low": 115,
+      "close": 116
+    },
+    {
+      "open": 117,
+      "high": 118,
+      "low": 116,
+      "close": 117
+    },
+    {
+      "open": 118,
+      "high": 119,
+      "low": 117,
+      "close": 118
+    },
+    {
+      "open": 119,
+      "high": 120,
+      "low": 118,
+      "close": 119
+    },
+    {
+      "open": 120,
+      "high": 121,
+      "low": 119,
+      "close": 120
+    },
+    {
+      "open": 121,
+      "high": 122,
+      "low": 120,
+      "close": 121
+    }
+  ]
+}

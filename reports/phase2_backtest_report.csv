@@ -1,0 +1,13 @@
+metric,value
+status,COMPLETED
+total_candles,22
+total_trades,3
+winning_trades,3
+losing_trades,0
+win_rate,100.0
+gross_profit,14.0
+gross_loss,0
+profit_factor,
+average_trade,4.67
+total_pnl,14.0
+max_drawdown,0.0
