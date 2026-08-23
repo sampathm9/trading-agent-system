@@ -1,0 +1,10 @@
+# Phase 13 integration configuration.
+
+SYMBOL = "NIFTY"
+QUANTITY = 1
+
+MIN_AI_CONFIDENCE = 0.50
+MAX_QUANTITY = 100
+
+PAPER_TRADING_REQUIRED = True
+REAL_BROKER_ALLOWED = False
