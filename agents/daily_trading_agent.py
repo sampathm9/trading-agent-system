@@ -2,6 +2,7 @@ from workers.data.market_data_worker import MarketDataWorker
 from workers.trading.trading_cycle_worker import TradingCycleWorker
 from workers.backtest.backtest_worker import BacktestWorker
 from workers.execution.execution_worker import ExecutionWorker
+from workers.calendar.market_calendar import NSEMarketCalendar
 
 
 class DailyTradingAgent:
@@ -11,7 +12,8 @@ class DailyTradingAgent:
         market_data_worker=None,
         trading_cycle_worker=None,
         backtest_worker=None,
-        execution_worker=None
+        execution_worker=None,
+        market_calendar=None
     ):
 
         self.market_data_worker = (
@@ -36,6 +38,11 @@ class DailyTradingAgent:
             or BacktestWorker()
         )
 
+        self.market_calendar = (
+            market_calendar
+            or NSEMarketCalendar()
+        )
+
         self.running = False
 
     # -------------------------------------------------
@@ -53,6 +60,44 @@ class DailyTradingAgent:
 
         return self.market_data_worker.latest_price(
             symbol
+        )
+
+    # -------------------------------------------------
+    # MARKET DAY
+    # -------------------------------------------------
+
+    def is_trading_day(self, trading_date=None):
+
+        return self.market_calendar.is_trading_day(
+            trading_date
+        )
+
+    def get_market_day_reason(self, trading_date=None):
+
+        return self.market_calendar.get_market_day_reason(
+            trading_date
+        )
+
+    def is_entry_allowed(
+        self,
+        current_time=None,
+        trading_date=None
+    ):
+
+        return self.market_calendar.is_entry_allowed(
+            current_time=current_time,
+            trading_date=trading_date
+        )
+
+    def is_market_open(
+        self,
+        current_time=None,
+        trading_date=None
+    ):
+
+        return self.market_calendar.is_market_open(
+            current_time=current_time,
+            trading_date=trading_date
         )
 
     # -------------------------------------------------
@@ -79,14 +124,36 @@ class DailyTradingAgent:
         quantity=1,
         short_period=5,
         long_period=10,
-        daily_loss=0.0
+        daily_loss=0.0,
+        trading_date=None,
+        current_time=None
     ):
+
+        if not self.is_trading_day(trading_date):
+
+            return {
+                "status": "SKIPPED",
+                "reason": self.get_market_day_reason(
+                    trading_date
+                )
+            }
+
+        if not self.is_entry_allowed(
+            current_time=current_time,
+            trading_date=trading_date
+        ):
+
+            return {
+                "status": "SKIPPED",
+                "reason": "ENTRY_NOT_ALLOWED"
+            }
 
         candles = self.market_data_worker.get_candles(
             symbol
         )
 
         if not candles:
+
             return {
                 "status": "NO_DATA",
                 "reason": "NO_MARKET_DATA"
@@ -115,10 +182,6 @@ class DailyTradingAgent:
     # EOD EXIT
     # -------------------------------------------------
 
-        # -------------------------------------------------
-    # EOD EXIT
-    # -------------------------------------------------
-
     def close_all_positions(self, current_prices):
 
         print()
@@ -138,14 +201,6 @@ class DailyTradingAgent:
             )
         }
 
-    def run_eod_exit(self, current_prices=None):
-
-        if current_prices is None:
-            current_prices = {}
-
-        return self.close_all_positions(
-            current_prices=current_prices
-        )
     # -------------------------------------------------
     # BACKTEST
     # -------------------------------------------------
@@ -166,6 +221,7 @@ class DailyTradingAgent:
         )
 
         if not candles:
+
             return {
                 "status": "NO_DATA",
                 "reason": "NO_MARKET_DATA"

@@ -1,11 +1,18 @@
 class PaperBroker:
 
     def __init__(self):
+
         self.orders = []
         self.positions = {}
         self.realized_pnl = 0.0
 
-    def place_order(self, symbol, side, quantity, price):
+    def place_order(
+        self,
+        symbol,
+        side,
+        quantity,
+        price
+    ):
 
         price = float(price)
         quantity = int(quantity)
@@ -80,15 +87,13 @@ class PaperBroker:
             order["realized_pnl"] = pnl
 
             if existing["quantity"] == 0:
+
                 del self.positions[symbol]
 
         else:
 
             order["status"] = "REJECTED"
             order["reason"] = "INVALID_SIDE"
-
-            print("[PAPER BROKER] ORDER REJECTED")
-            print(order)
 
             return order
 
@@ -100,42 +105,59 @@ class PaperBroker:
         return order
 
     def get_orders(self):
+
         return self.orders
 
     def get_positions(self):
+
         return self.positions
 
     def get_position(self, symbol):
+
         return self.positions.get(symbol)
 
     def get_realized_pnl(self):
+
         return self.realized_pnl
 
-    def calculate_unrealized_pnl(self, symbol, current_price):
+    def calculate_unrealized_pnl(
+        self,
+        symbol,
+        current_price
+    ):
 
         position = self.positions.get(symbol)
 
         if position is None:
+
             return 0.0
 
         return (
-            float(current_price) - position["entry_price"]
+            float(current_price)
+            - position["entry_price"]
         ) * position["quantity"]
 
     def close_all_positions(self, current_prices):
 
-        print("[PAPER BROKER] Closing all paper positions")
+        print(
+            "[PAPER BROKER] Closing all paper positions"
+        )
 
         closing_orders = []
 
-        for symbol, position in list(self.positions.items()):
+        for symbol, position in list(
+            self.positions.items()
+        ):
 
             current_price = current_prices.get(symbol)
 
             if current_price is None:
+
                 print(
-                    f"[PAPER BROKER] No price available for {symbol}"
+                    "[PAPER BROKER] No closing price for",
+                    symbol
                 )
+
                 continue
 
             order = self.place_order(

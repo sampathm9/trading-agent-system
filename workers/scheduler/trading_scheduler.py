@@ -1,16 +1,29 @@
 from datetime import datetime
 
+from workers.calendar.market_calendar import NSEMarketCalendar
+
 
 class TradingScheduler:
 
     def __init__(
         self,
-        daily_agent=None,
-        symbol="NIFTY"
+        agent,
+        market_calendar=None
     ):
-        self.daily_agent = daily_agent
-        self.symbol = symbol
+
+        self.agent = agent
+
+        self.market_calendar = (
+            market_calendar
+            or NSEMarketCalendar()
+        )
+
         self.running = False
+        self.entries_allowed = False
+
+    # -------------------------------------------------
+    # LIFECYCLE
+    # -------------------------------------------------
 
     def start(self):
 
@@ -21,10 +34,54 @@ class TradingScheduler:
     def stop(self):
 
         self.running = False
+        self.entries_allowed = False
 
         print("[SCHEDULER] Trading scheduler stopped")
 
+    # -------------------------------------------------
+    # MARKET DAY GUARD
+    # -------------------------------------------------
+
+    def check_market_day(self):
+
+        today = datetime.now().date()
+
+        if not self.market_calendar.is_trading_day(today):
+
+            reason = (
+                self.market_calendar
+                .get_market_day_reason(today)
+            )
+
+            print(
+                f"[SCHEDULER] Market closed: {reason}"
+            )
+
+            return {
+                "status": "MARKET_CLOSED",
+                "date": today.isoformat(),
+                "reason": reason
+            }
+
+        print("[SCHEDULER] Market day confirmed")
+
+        return {
+            "status": "TRADING_DAY",
+            "date": today.isoformat(),
+            "reason": "TRADING_DAY"
+        }
+
+    # -------------------------------------------------
+    # PRE MARKET
+    # -------------------------------------------------
+
     def pre_market(self):
+
+        market_status = self.check_market_day()
+
+        if market_status["status"] != "TRADING_DAY":
+
+            return market_status
 
         print("[SCHEDULER] Pre-market phase")
 
@@ -34,7 +91,21 @@ class TradingScheduler:
             "timestamp": datetime.now().isoformat()
         }
 
-    def trading_session(self):
+    # -------------------------------------------------
+    # TRADING SESSION
+    # -------------------------------------------------
+
+    def start_trading_session(self):
+
+        market_status = self.check_market_day()
+
+        if market_status["status"] != "TRADING_DAY":
+
+            self.entries_allowed = False
+
+            return market_status
+
+        self.entries_allowed = True
 
         print("[SCHEDULER] Trading session started")
 
@@ -44,7 +115,13 @@ class TradingScheduler:
             "timestamp": datetime.now().isoformat()
         }
 
+    # -------------------------------------------------
+    # STOP NEW ENTRIES
+    # -------------------------------------------------
+
     def stop_new_entries(self):
+
+        self.entries_allowed = False
 
         print("[SCHEDULER] New entries stopped")
 
@@ -54,35 +131,23 @@ class TradingScheduler:
             "timestamp": datetime.now().isoformat()
         }
 
-    def eod_exit(self):
+    # -------------------------------------------------
+    # EOD EXIT
+    # -------------------------------------------------
+
+    def eod_exit(self, current_prices):
 
         print("[SCHEDULER] EOD exit phase")
 
-        if self.daily_agent is None:
-
-            return {
-                "status": "SKIPPED",
-                "reason": "NO_DAILY_AGENT"
-            }
-
-        current_price = (
-            self.daily_agent.get_latest_price(
-                self.symbol
-            )
+        result = self.agent.close_all_positions(
+            current_prices=current_prices
         )
 
-        if current_price is None:
+        return result
 
-            return {
-                "status": "SKIPPED",
-                "reason": "NO_CURRENT_PRICE"
-            }
-
-        return self.daily_agent.run_eod_exit(
-            current_prices={
-                self.symbol: current_price
-            }
-        )
+    # -------------------------------------------------
+    # POST MARKET
+    # -------------------------------------------------
 
     def post_market(self):
 
@@ -94,45 +159,58 @@ class TradingScheduler:
             "timestamp": datetime.now().isoformat()
         }
 
-    def run_cycle(self):
+    # -------------------------------------------------
+    # FULL DAILY CYCLE
+    # -------------------------------------------------
+
+    def run_daily_cycle(
+        self,
+        current_prices=None
+    ):
 
         if not self.running:
 
             return {
-                "status": "STOPPED",
-                "reason": "SCHEDULER_NOT_RUNNING"
+                "status": "SCHEDULER_NOT_RUNNING"
             }
 
-        print()
-        print("=" * 60)
-        print("DAILY SCHEDULE CYCLE")
-        print("=" * 60)
+        market_status = self.check_market_day()
 
-        results = {}
+        if market_status["status"] != "TRADING_DAY":
 
-        results["pre_market"] = (
-            self.pre_market()
+            return {
+                "status": "MARKET_CLOSED",
+                "market": market_status,
+                "pre_market": market_status,
+                "trading_session": market_status,
+                "stop_new_entries": market_status,
+                "eod_exit": {
+                    "status": "NOT_REQUIRED"
+                },
+                "post_market": market_status
+            }
+
+        pre_market = self.pre_market()
+
+        trading_session = (
+            self.start_trading_session()
         )
 
-        results["trading_session"] = (
-            self.trading_session()
-        )
-
-        results["stop_new_entries"] = (
+        stop_new_entries = (
             self.stop_new_entries()
         )
 
-        results["eod_exit"] = (
-            self.eod_exit()
+        eod_exit = self.eod_exit(
+            current_prices or {}
         )
 
-        results["post_market"] = (
-            self.post_market()
-        )
+        post_market = self.post_market()
 
-        print()
-        print("=" * 60)
-        print("DAILY SCHEDULE CYCLE COMPLETE")
-        print("=" * 60)
-
-        return results
+        return {
+            "status": "COMPLETED",
+            "pre_market": pre_market,
+            "trading_session": trading_session,
+            "stop_new_entries": stop_new_entries,
+            "eod_exit": eod_exit,
+            "post_market": post_market
+        }
