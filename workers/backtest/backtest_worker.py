@@ -10,7 +10,6 @@ class BacktestWorker:
         quantity=1,
         starting_cash=100000.0
     ):
-
         results = []
         cash = starting_cash
         position = None
@@ -30,10 +29,11 @@ class BacktestWorker:
                 cycle_worker = self.trading_cycle_worker
 
             result = cycle_worker.run(
-                historical_candles,
-                symbol,
-                quantity,
-                price
+                candles=historical_candles,
+                symbol=symbol,
+                quantity=quantity,
+                price=price,
+                position=position
             )
 
             execution = result.get("execution", {})
@@ -84,7 +84,6 @@ class BacktestWorker:
         if position is not None:
 
             final_price = candles[-1]["close"]
-
             entry_price = position["entry_price"]
 
             pnl = (

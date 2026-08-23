@@ -3,6 +3,9 @@ from workers.decision.decision_worker import DecisionWorker
 from workers.execution.execution_worker import ExecutionWorker
 
 
+_POSITION_NOT_PROVIDED = object()
+
+
 class TradingCycleWorker:
 
     def __init__(
@@ -23,7 +26,8 @@ class TradingCycleWorker:
         price,
         short_period=5,
         long_period=10,
-        daily_loss=0.0
+        daily_loss=0.0,
+        position=_POSITION_NOT_PROVIDED
     ):
 
         trend_result = self.trend_worker.analyze(
@@ -35,6 +39,28 @@ class TradingCycleWorker:
         trend = trend_result["trend"]
 
         decision = self.decision_worker.decide(trend)
+
+        # Only apply position synchronization when the caller
+        # explicitly provides position state.
+        if position is not _POSITION_NOT_PROVIDED:
+
+            action = decision.get("action")
+
+            # Do not open another BUY while a position is already open.
+            if position is not None and action == "BUY":
+                decision = {
+                    **decision,
+                    "action": "HOLD",
+                    "reason": "POSITION_ALREADY_OPEN"
+                }
+
+            # Do not SELL when there is no open position.
+            elif position is None and action == "SELL":
+                decision = {
+                    **decision,
+                    "action": "HOLD",
+                    "reason": "NO_OPEN_POSITION"
+                }
 
         execution = self.execution_worker.execute(
             decision=decision,
