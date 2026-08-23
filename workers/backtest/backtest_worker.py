@@ -1,142 +1,349 @@
 class BacktestWorker:
 
-    def __init__(self, trading_cycle_worker=None):
-        self.trading_cycle_worker = trading_cycle_worker
+    def __init__(self, trend_worker=None, decision_worker=None):
+        from workers.intelligence.trend_worker import TrendWorker
+        from workers.decision.decision_worker import DecisionWorker
+
+        self.trend_worker = trend_worker or TrendWorker()
+        self.decision_worker = decision_worker or DecisionWorker()
 
     def run(
         self,
         candles,
-        symbol,
+        symbol="NIFTY",
         quantity=1,
-        starting_cash=100000.0
+        short_period=5,
+        long_period=10,
+        stop_loss_pct=0.02,
+        take_profit_pct=0.04,
+        max_daily_loss=None
     ):
-        results = []
-        cash = starting_cash
-        position = None
-        trades = []
 
-        for index in range(len(candles)):
+        if not candles:
+            raise ValueError("No candle data provided")
 
-            current_candle = candles[index]
-            price = current_candle["close"]
-
-            historical_candles = candles[:index + 1]
-
-            if self.trading_cycle_worker is None:
-                from workers.trading.trading_cycle_worker import TradingCycleWorker
-                cycle_worker = TradingCycleWorker()
-            else:
-                cycle_worker = self.trading_cycle_worker
-
-            result = cycle_worker.run(
-                candles=historical_candles,
-                symbol=symbol,
-                quantity=quantity,
-                price=price,
-                position=position
+        if len(candles) <= long_period:
+            raise ValueError(
+                "Not enough candles for the selected long_period"
             )
 
-            execution = result.get("execution", {})
-            action = result.get("decision", {}).get("action")
+        trades = []
 
-            if execution.get("status") == "EXECUTED":
+        position = None
 
-                if action == "BUY" and position is None:
+        total_realized_pnl = 0.0
+        peak_pnl = 0.0
+        max_drawdown = 0.0
 
-                    position = {
-                        "symbol": symbol,
-                        "quantity": quantity,
-                        "entry_price": price,
-                        "entry_index": index
-                    }
+        for i in range(long_period, len(candles)):
 
-                elif action == "SELL" and position is not None:
+            current_price = float(candles[i]["close"])
 
-                    entry_price = position["entry_price"]
+            # -------------------------------------------------
+            # POSITION MANAGEMENT
+            # -------------------------------------------------
+
+            if position is not None:
+
+                entry_price = position["entry_price"]
+
+                stop_loss_price = (
+                    entry_price * (1 - stop_loss_pct)
+                )
+
+                take_profit_price = (
+                    entry_price * (1 + take_profit_pct)
+                )
+
+                # STOP LOSS
+                if current_price <= stop_loss_price:
 
                     pnl = (
-                        price - entry_price
+                        current_price - entry_price
                     ) * position["quantity"]
 
-                    cash += pnl
+                    total_realized_pnl += pnl
 
                     trades.append({
+                        "type": "STOP_LOSS",
                         "symbol": symbol,
                         "quantity": position["quantity"],
+                        "price": current_price,
                         "entry_price": entry_price,
-                        "exit_price": price,
                         "pnl": pnl,
-                        "entry_index": position["entry_index"],
-                        "exit_index": index,
-                        "exit_reason": "SIGNAL"
+                        "index": i
                     })
 
                     position = None
 
-            results.append({
-                "index": index,
-                "price": price,
-                "action": action,
-                "result": result
-            })
+                    peak_pnl = max(
+                        peak_pnl,
+                        total_realized_pnl
+                    )
 
-        # End-of-backtest exit
+                    drawdown = peak_pnl - total_realized_pnl
+
+                    max_drawdown = max(
+                        max_drawdown,
+                        drawdown
+                    )
+
+                    continue
+
+                # TAKE PROFIT
+                if current_price >= take_profit_price:
+
+                    pnl = (
+                        current_price - entry_price
+                    ) * position["quantity"]
+
+                    total_realized_pnl += pnl
+
+                    trades.append({
+                        "type": "TAKE_PROFIT",
+                        "symbol": symbol,
+                        "quantity": position["quantity"],
+                        "price": current_price,
+                        "entry_price": entry_price,
+                        "pnl": pnl,
+                        "index": i
+                    })
+
+                    position = None
+
+                    peak_pnl = max(
+                        peak_pnl,
+                        total_realized_pnl
+                    )
+
+                    drawdown = peak_pnl - total_realized_pnl
+
+                    max_drawdown = max(
+                        max_drawdown,
+                        drawdown
+                    )
+
+                    continue
+
+            # -------------------------------------------------
+            # DAILY LOSS PROTECTION
+            # -------------------------------------------------
+
+            if (
+                max_daily_loss is not None
+                and total_realized_pnl <= -abs(max_daily_loss)
+            ):
+
+                if position is not None:
+
+                    entry_price = position["entry_price"]
+
+                    pnl = (
+                        current_price - entry_price
+                    ) * position["quantity"]
+
+                    total_realized_pnl += pnl
+
+                    trades.append({
+                        "type": "RISK_EXIT",
+                        "symbol": symbol,
+                        "quantity": position["quantity"],
+                        "price": current_price,
+                        "entry_price": entry_price,
+                        "pnl": pnl,
+                        "index": i
+                    })
+
+                    position = None
+
+                break
+
+            # -------------------------------------------------
+            # SIGNAL GENERATION
+            # -------------------------------------------------
+
+            # IMPORTANT:
+            # Use candles BEFORE the current candle.
+            # This prevents same-candle lookahead.
+
+            historical_candles = candles[:i]
+
+            trend_result = self.trend_worker.analyze(
+                historical_candles,
+                short_period=short_period,
+                long_period=long_period
+            )
+
+            trend = trend_result["trend"]
+
+            decision = self.decision_worker.decide(trend)
+
+            action = decision["action"]
+
+            # -------------------------------------------------
+            # ENTRY
+            # -------------------------------------------------
+
+            if position is None and action == "BUY":
+
+                position = {
+                    "symbol": symbol,
+                    "quantity": quantity,
+                    "entry_price": current_price,
+                    "entry_index": i
+                }
+
+                trades.append({
+                    "type": "BUY",
+                    "symbol": symbol,
+                    "quantity": quantity,
+                    "price": current_price,
+                    "index": i
+                })
+
+            # -------------------------------------------------
+            # SIGNAL EXIT
+            # -------------------------------------------------
+
+            elif position is not None and action == "SELL":
+
+                entry_price = position["entry_price"]
+
+                pnl = (
+                    current_price - entry_price
+                ) * position["quantity"]
+
+                total_realized_pnl += pnl
+
+                trades.append({
+                    "type": "SELL",
+                    "symbol": symbol,
+                    "quantity": position["quantity"],
+                    "price": current_price,
+                    "entry_price": entry_price,
+                    "pnl": pnl,
+                    "index": i
+                })
+
+                position = None
+
+                peak_pnl = max(
+                    peak_pnl,
+                    total_realized_pnl
+                )
+
+                drawdown = peak_pnl - total_realized_pnl
+
+                max_drawdown = max(
+                    max_drawdown,
+                    drawdown
+                )
+
+        # -----------------------------------------------------
+        # FINAL EXIT
+        # -----------------------------------------------------
+
         if position is not None:
 
-            final_price = candles[-1]["close"]
+            final_price = float(candles[-1]["close"])
+
             entry_price = position["entry_price"]
 
             pnl = (
                 final_price - entry_price
             ) * position["quantity"]
 
-            cash += pnl
+            total_realized_pnl += pnl
 
             trades.append({
+                "type": "FINAL_EXIT",
                 "symbol": symbol,
                 "quantity": position["quantity"],
+                "price": final_price,
                 "entry_price": entry_price,
-                "exit_price": final_price,
                 "pnl": pnl,
-                "entry_index": position["entry_index"],
-                "exit_index": len(candles) - 1,
-                "exit_reason": "END_OF_BACKTEST"
+                "index": len(candles) - 1
             })
 
             position = None
 
-        total_pnl = sum(
-            trade["pnl"]
+            peak_pnl = max(
+                peak_pnl,
+                total_realized_pnl
+            )
+
+            drawdown = peak_pnl - total_realized_pnl
+
+            max_drawdown = max(
+                max_drawdown,
+                drawdown
+            )
+
+        # -----------------------------------------------------
+        # STATISTICS
+        # -----------------------------------------------------
+
+        completed_trades = [
+            trade
             for trade in trades
-        )
+            if trade["type"] in (
+                "SELL",
+                "STOP_LOSS",
+                "TAKE_PROFIT",
+                "FINAL_EXIT",
+                "RISK_EXIT"
+            )
+        ]
 
         winning_trades = [
             trade
-            for trade in trades
+            for trade in completed_trades
             if trade["pnl"] > 0
         ]
 
         losing_trades = [
             trade
-            for trade in trades
+            for trade in completed_trades
             if trade["pnl"] < 0
         ]
 
+        total_completed = len(completed_trades)
+
         win_rate = (
-            len(winning_trades) / len(trades) * 100
-            if trades
+            len(winning_trades) / total_completed * 100
+            if total_completed > 0
+            else 0.0
+        )
+
+        average_win = (
+            sum(
+                trade["pnl"]
+                for trade in winning_trades
+            ) / len(winning_trades)
+            if winning_trades
+            else 0.0
+        )
+
+        average_loss = (
+            sum(
+                trade["pnl"]
+                for trade in losing_trades
+            ) / len(losing_trades)
+            if losing_trades
             else 0.0
         )
 
         return {
-            "starting_cash": starting_cash,
-            "ending_cash": cash,
-            "total_pnl": total_pnl,
-            "total_trades": len(trades),
+            "symbol": symbol,
+            "total_candles": len(candles),
+            "total_orders": len(trades),
+            "completed_trades": total_completed,
             "winning_trades": len(winning_trades),
             "losing_trades": len(losing_trades),
             "win_rate": win_rate,
-            "open_position": position,
-            "trades": trades,
-            "results": results
+            "average_win": average_win,
+            "average_loss": average_loss,
+            "max_drawdown": max_drawdown,
+            "total_realized_pnl": total_realized_pnl,
+            "trades": trades
         }

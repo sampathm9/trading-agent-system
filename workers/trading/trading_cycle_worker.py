@@ -40,13 +40,10 @@ class TradingCycleWorker:
 
         decision = self.decision_worker.decide(trend)
 
-        # Only apply position synchronization when the caller
-        # explicitly provides position state.
         if position is not _POSITION_NOT_PROVIDED:
 
             action = decision.get("action")
 
-            # Do not open another BUY while a position is already open.
             if position is not None and action == "BUY":
                 decision = {
                     **decision,
@@ -54,7 +51,6 @@ class TradingCycleWorker:
                     "reason": "POSITION_ALREADY_OPEN"
                 }
 
-            # Do not SELL when there is no open position.
             elif position is None and action == "SELL":
                 decision = {
                     **decision,
