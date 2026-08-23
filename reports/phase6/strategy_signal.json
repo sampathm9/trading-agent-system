@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-08-23T19:12:56.948007",
+  "result": {
+    "status": "COMPLETED",
+    "trend": {
+      "status": "COMPLETED",
+      "trend": "BULLISH",
+      "confidence": 1.0,
+      "price": 121.0,
+      "short_sma": 119.0,
+      "long_sma": 116.5,
+      "momentum": 0.04310344827586207,
+      "bullish_score": 3,
+      "bearish_score": 0
+    },
+    "signal": {
+      "timestamp": "2026-08-23T19:12:56.946616",
+      "action": "BUY",
+      "trend": "BULLISH",
+      "confidence": 1.0,
+      "reason": "BULLISH_TREND"
+    },
+    "config": {
+      "short_period": 5,
+      "long_period": 10,
+      "momentum_period": 5,
+      "minimum_confidence": 0.6
+    }
+  }
+}
