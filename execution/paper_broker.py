@@ -82,6 +82,16 @@ class PaperBroker:
             if existing["quantity"] == 0:
                 del self.positions[symbol]
 
+        else:
+
+            order["status"] = "REJECTED"
+            order["reason"] = "INVALID_SIDE"
+
+            print("[PAPER BROKER] ORDER REJECTED")
+            print(order)
+
+            return order
+
         self.orders.append(order)
 
         print("[PAPER BROKER] ORDER FILLED")
@@ -112,7 +122,29 @@ class PaperBroker:
             float(current_price) - position["entry_price"]
         ) * position["quantity"]
 
-    def close_all_positions(self):
+    def close_all_positions(self, current_prices):
 
         print("[PAPER BROKER] Closing all paper positions")
-        self.positions.clear()
+
+        closing_orders = []
+
+        for symbol, position in list(self.positions.items()):
+
+            current_price = current_prices.get(symbol)
+
+            if current_price is None:
+                print(
+                    f"[PAPER BROKER] No price available for {symbol}"
+                )
+                continue
+
+            order = self.place_order(
+                symbol=symbol,
+                side="SELL",
+                quantity=position["quantity"],
+                price=current_price
+            )
+
+            closing_orders.append(order)
+
+        return closing_orders
