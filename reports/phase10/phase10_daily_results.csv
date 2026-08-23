@@ -1,0 +1,6 @@
+date,status,processed_candles,trade_count,entries,exits,realized_pnl,position_open,entries_stopped,event_count
+2026-08-24,COMPLETED,76,25,13,12,-305.6,False,True,160
+2026-08-25,COMPLETED,76,25,13,12,-305.6,False,True,160
+2026-08-26,COMPLETED,76,25,13,12,-305.6,False,True,160
+2026-08-27,COMPLETED,76,25,13,12,-305.6,False,True,160
+2026-08-28,COMPLETED,76,25,13,12,-305.6,False,True,160

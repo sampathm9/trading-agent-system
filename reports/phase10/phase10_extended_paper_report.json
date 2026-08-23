@@ -1,0 +1,1022 @@
+{
+  "phase": 10,
+  "title": "Extended Paper Trading",
+  "summary": {
+    "days": 5,
+    "total_candles": 380,
+    "total_trades": 125,
+    "total_entries": 65,
+    "total_exits": 60,
+    "total_realized_pnl": -1528.0,
+    "all_sessions_completed": true,
+    "all_positions_closed": true,
+    "all_entry_cutoffs": true
+  },
+  "daily_results": [
+    {
+      "date": "2026-08-24",
+      "status": "COMPLETED",
+      "processed_candles": 76,
+      "trade_count": 25,
+      "entries": 13,
+      "exits": 12,
+      "realized_pnl": -305.6,
+      "position_open": false,
+      "entries_stopped": true,
+      "event_count": 160,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:15:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 100.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 100.0,
+          "status": "STOP_LOSS",
+          "pnl": -40.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T09:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 101.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:20:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 101.0,
+          "status": "STOP_LOSS",
+          "pnl": -39.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T09:25:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 102.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 102.0,
+          "status": "STOP_LOSS",
+          "pnl": -38.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T09:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 103.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:30:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 103.0,
+          "status": "STOP_LOSS",
+          "pnl": -37.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T09:35:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 104.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:35:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 104.0,
+          "status": "STOP_LOSS",
+          "pnl": -36.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T09:40:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 105.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:40:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 105.0,
+          "status": "STOP_LOSS",
+          "pnl": -35.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T09:45:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 106.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:45:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 106.0,
+          "status": "STOP_LOSS",
+          "pnl": -34.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T09:50:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 107.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:50:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 107.0,
+          "status": "STOP_LOSS",
+          "pnl": -33.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T09:55:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 108.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T09:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 108.0,
+          "status": "STOP_LOSS",
+          "pnl": -32.80000000000001
+        },
+        {
+          "timestamp": "2026-08-24T10:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 109.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T10:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 114.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.0
+        },
+        {
+          "timestamp": "2026-08-24T10:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 115.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T10:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 125.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 10.0
+        },
+        {
+          "timestamp": "2026-08-24T11:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 130.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-24T13:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 135.4,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.400000000000006
+        },
+        {
+          "timestamp": "2026-08-24T13:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 135.6,
+          "status": "OPENED"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-25",
+      "status": "COMPLETED",
+      "processed_candles": 76,
+      "trade_count": 25,
+      "entries": 13,
+      "exits": 12,
+      "realized_pnl": -305.6,
+      "position_open": false,
+      "entries_stopped": true,
+      "event_count": 160,
+      "trades": [
+        {
+          "timestamp": "2026-08-25T09:15:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 100.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 100.0,
+          "status": "STOP_LOSS",
+          "pnl": -40.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T09:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 101.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:20:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 101.0,
+          "status": "STOP_LOSS",
+          "pnl": -39.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T09:25:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 102.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 102.0,
+          "status": "STOP_LOSS",
+          "pnl": -38.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T09:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 103.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:30:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 103.0,
+          "status": "STOP_LOSS",
+          "pnl": -37.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T09:35:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 104.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:35:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 104.0,
+          "status": "STOP_LOSS",
+          "pnl": -36.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T09:40:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 105.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:40:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 105.0,
+          "status": "STOP_LOSS",
+          "pnl": -35.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T09:45:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 106.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:45:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 106.0,
+          "status": "STOP_LOSS",
+          "pnl": -34.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T09:50:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 107.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:50:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 107.0,
+          "status": "STOP_LOSS",
+          "pnl": -33.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T09:55:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 108.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T09:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 108.0,
+          "status": "STOP_LOSS",
+          "pnl": -32.80000000000001
+        },
+        {
+          "timestamp": "2026-08-25T10:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 109.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T10:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 114.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.0
+        },
+        {
+          "timestamp": "2026-08-25T10:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 115.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T10:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 125.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 10.0
+        },
+        {
+          "timestamp": "2026-08-25T11:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 130.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-25T13:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 135.4,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.400000000000006
+        },
+        {
+          "timestamp": "2026-08-25T13:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 135.6,
+          "status": "OPENED"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-26",
+      "status": "COMPLETED",
+      "processed_candles": 76,
+      "trade_count": 25,
+      "entries": 13,
+      "exits": 12,
+      "realized_pnl": -305.6,
+      "position_open": false,
+      "entries_stopped": true,
+      "event_count": 160,
+      "trades": [
+        {
+          "timestamp": "2026-08-26T09:15:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 100.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 100.0,
+          "status": "STOP_LOSS",
+          "pnl": -40.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T09:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 101.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:20:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 101.0,
+          "status": "STOP_LOSS",
+          "pnl": -39.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T09:25:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 102.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 102.0,
+          "status": "STOP_LOSS",
+          "pnl": -38.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T09:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 103.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:30:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 103.0,
+          "status": "STOP_LOSS",
+          "pnl": -37.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T09:35:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 104.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:35:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 104.0,
+          "status": "STOP_LOSS",
+          "pnl": -36.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T09:40:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 105.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:40:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 105.0,
+          "status": "STOP_LOSS",
+          "pnl": -35.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T09:45:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 106.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:45:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 106.0,
+          "status": "STOP_LOSS",
+          "pnl": -34.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T09:50:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 107.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:50:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 107.0,
+          "status": "STOP_LOSS",
+          "pnl": -33.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T09:55:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 108.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T09:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 108.0,
+          "status": "STOP_LOSS",
+          "pnl": -32.80000000000001
+        },
+        {
+          "timestamp": "2026-08-26T10:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 109.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T10:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 114.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.0
+        },
+        {
+          "timestamp": "2026-08-26T10:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 115.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T10:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 125.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 10.0
+        },
+        {
+          "timestamp": "2026-08-26T11:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 130.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-26T13:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 135.4,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.400000000000006
+        },
+        {
+          "timestamp": "2026-08-26T13:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 135.6,
+          "status": "OPENED"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-27",
+      "status": "COMPLETED",
+      "processed_candles": 76,
+      "trade_count": 25,
+      "entries": 13,
+      "exits": 12,
+      "realized_pnl": -305.6,
+      "position_open": false,
+      "entries_stopped": true,
+      "event_count": 160,
+      "trades": [
+        {
+          "timestamp": "2026-08-27T09:15:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 100.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 100.0,
+          "status": "STOP_LOSS",
+          "pnl": -40.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T09:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 101.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:20:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 101.0,
+          "status": "STOP_LOSS",
+          "pnl": -39.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T09:25:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 102.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 102.0,
+          "status": "STOP_LOSS",
+          "pnl": -38.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T09:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 103.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:30:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 103.0,
+          "status": "STOP_LOSS",
+          "pnl": -37.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T09:35:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 104.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:35:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 104.0,
+          "status": "STOP_LOSS",
+          "pnl": -36.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T09:40:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 105.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:40:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 105.0,
+          "status": "STOP_LOSS",
+          "pnl": -35.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T09:45:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 106.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:45:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 106.0,
+          "status": "STOP_LOSS",
+          "pnl": -34.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T09:50:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 107.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:50:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 107.0,
+          "status": "STOP_LOSS",
+          "pnl": -33.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T09:55:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 108.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T09:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 108.0,
+          "status": "STOP_LOSS",
+          "pnl": -32.80000000000001
+        },
+        {
+          "timestamp": "2026-08-27T10:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 109.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T10:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 114.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.0
+        },
+        {
+          "timestamp": "2026-08-27T10:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 115.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T10:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 125.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 10.0
+        },
+        {
+          "timestamp": "2026-08-27T11:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 130.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-27T13:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 135.4,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.400000000000006
+        },
+        {
+          "timestamp": "2026-08-27T13:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 135.6,
+          "status": "OPENED"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-28",
+      "status": "COMPLETED",
+      "processed_candles": 76,
+      "trade_count": 25,
+      "entries": 13,
+      "exits": 12,
+      "realized_pnl": -305.6,
+      "position_open": false,
+      "entries_stopped": true,
+      "event_count": 160,
+      "trades": [
+        {
+          "timestamp": "2026-08-28T09:15:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 100.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 100.0,
+          "status": "STOP_LOSS",
+          "pnl": -40.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T09:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 101.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:20:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 101.0,
+          "status": "STOP_LOSS",
+          "pnl": -39.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T09:25:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 102.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 102.0,
+          "status": "STOP_LOSS",
+          "pnl": -38.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T09:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 103.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:30:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 103.0,
+          "status": "STOP_LOSS",
+          "pnl": -37.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T09:35:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 104.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:35:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 104.0,
+          "status": "STOP_LOSS",
+          "pnl": -36.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T09:40:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 105.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:40:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 105.0,
+          "status": "STOP_LOSS",
+          "pnl": -35.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T09:45:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 106.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:45:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 106.0,
+          "status": "STOP_LOSS",
+          "pnl": -34.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T09:50:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 107.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:50:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 107.0,
+          "status": "STOP_LOSS",
+          "pnl": -33.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T09:55:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 108.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T09:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 108.0,
+          "status": "STOP_LOSS",
+          "pnl": -32.80000000000001
+        },
+        {
+          "timestamp": "2026-08-28T10:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 109.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T10:25:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 114.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.0
+        },
+        {
+          "timestamp": "2026-08-28T10:30:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 115.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T10:55:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 125.0,
+          "status": "TAKE_PROFIT",
+          "pnl": 10.0
+        },
+        {
+          "timestamp": "2026-08-28T11:00:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 130.0,
+          "status": "OPENED"
+        },
+        {
+          "timestamp": "2026-08-28T13:15:00",
+          "symbol": "NIFTY",
+          "side": "SELL",
+          "price": 135.4,
+          "status": "TAKE_PROFIT",
+          "pnl": 5.400000000000006
+        },
+        {
+          "timestamp": "2026-08-28T13:20:00",
+          "symbol": "NIFTY",
+          "side": "BUY",
+          "price": 135.6,
+          "status": "OPENED"
+        }
+      ]
+    }
+  ]
+}

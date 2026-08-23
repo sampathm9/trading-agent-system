@@ -1,52 +1,44 @@
-from datetime import datetime
-
-from execution.paper_broker import PaperBroker
-from risk.guardian import RiskGuardian
+from workers.broker.broker_interface import BrokerInterface
+from workers.broker.models import OrderRequest, OrderResult
 
 
 class ExecutionWorker:
 
-    def __init__(self, broker=None, risk_guardian=None):
-        self.broker = broker or PaperBroker()
-        self.risk_guardian = risk_guardian or RiskGuardian()
+    def __init__(self, broker: BrokerInterface):
+        self.broker = broker
 
-    def execute(
-        self,
-        decision,
-        symbol,
-        quantity,
-        price,
-        daily_loss=0.0
-    ):
+    def execute(self, order: OrderRequest) -> OrderResult:
 
-        action = decision.get("action")
+        result = self.broker.place_order(order)
 
-        if action not in ("BUY", "SELL"):
-            return {
-                "status": "SKIPPED",
-                "reason": "NO_EXECUTABLE_ACTION"
-            }
-
-        approved = self.risk_guardian.approve(
-            quantity,
-            daily_loss
+        print(
+            "[EXECUTION]",
+            result.status.value,
+            result.symbol,
+            result.side.value,
+            result.quantity,
+            result.price,
         )
 
-        if not approved:
-            return {
-                "status": "REJECTED",
-                "reason": "RISK_GUARDIAN_REJECTED"
-            }
+        return result
 
-        order = self.broker.place_order(
-            symbol=symbol,
-            side=action,
-            quantity=quantity,
-            price=price
-        )
+    def close_all(self, prices: dict[str, float]):
 
-        return {
-            "status": "EXECUTED",
-            "timestamp": datetime.now().isoformat(),
-            "order": order
-        }
+        results = self.broker.close_all_positions(prices)
+
+        for result in results:
+            print(
+                "[EXECUTION] EOD",
+                result.status.value,
+                result.symbol,
+                result.quantity,
+                result.price,
+            )
+
+        return results
+
+    def positions(self):
+        return self.broker.get_positions()
+
+    def order_status(self, order_id: str):
+        return self.broker.get_order_status(order_id)
