@@ -1,0 +1,13 @@
+metric,value
+total_trades,3
+winning_trades,0
+losing_trades,3
+win_rate,0.0
+gross_profit,0
+gross_loss,52.748
+profit_factor,0.0
+total_pnl,-52.748
+average_trade,-17.5827
+max_drawdown,52.748
+max_consecutive_wins,0
+max_consecutive_losses,3

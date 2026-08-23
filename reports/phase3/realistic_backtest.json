@@ -1,0 +1,231 @@
+{
+  "status": "COMPLETED",
+  "symbol": "NIFTY",
+  "quantity": 1,
+  "total_candles": 22,
+  "validation": {
+    "valid": true,
+    "candle_count": 22
+  },
+  "raw_result": {
+    "symbol": "NIFTY",
+    "total_candles": 22,
+    "total_orders": 6,
+    "completed_trades": 3,
+    "winning_trades": 3,
+    "losing_trades": 0,
+    "win_rate": 100.0,
+    "average_win": 4.666666666666667,
+    "average_loss": 0.0,
+    "max_drawdown": 0.0,
+    "total_realized_pnl": 14.0,
+    "trades": [
+      {
+        "type": "BUY",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 105.0,
+        "index": 5
+      },
+      {
+        "type": "TAKE_PROFIT",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 110.0,
+        "entry_price": 105.0,
+        "pnl": 5.0,
+        "index": 10
+      },
+      {
+        "type": "BUY",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 111.0,
+        "index": 11
+      },
+      {
+        "type": "TAKE_PROFIT",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 116.0,
+        "entry_price": 111.0,
+        "pnl": 5.0,
+        "index": 16
+      },
+      {
+        "type": "BUY",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 117.0,
+        "index": 17
+      },
+      {
+        "type": "FINAL_EXIT",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 121.0,
+        "entry_price": 117.0,
+        "pnl": 4.0,
+        "index": 21
+      }
+    ]
+  },
+  "trades": [
+    {
+      "type": "BUY",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 105.0,
+      "index": 5,
+      "slippage_price": 105.10499999999999
+    },
+    {
+      "type": "TAKE_PROFIT",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 110.0,
+      "entry_price": 105.0,
+      "pnl": 5.0,
+      "index": 10,
+      "entry_price_gross": 105.0,
+      "exit_price_gross": 110.0,
+      "effective_entry_price": 105.10499999999999,
+      "effective_exit_price": 109.89,
+      "gross_pnl": 4.785,
+      "total_cost": 22.0215,
+      "net_pnl": -17.2365,
+      "timestamp": "2026-08-11 10:00:00",
+      "entry_index": 5
+    },
+    {
+      "type": "BUY",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 111.0,
+      "index": 11,
+      "slippage_price": 111.11099999999999
+    },
+    {
+      "type": "TAKE_PROFIT",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 116.0,
+      "entry_price": 111.0,
+      "pnl": 5.0,
+      "index": 16,
+      "entry_price_gross": 111.0,
+      "exit_price_gross": 116.0,
+      "effective_entry_price": 111.11099999999999,
+      "effective_exit_price": 115.884,
+      "gross_pnl": 4.773,
+      "total_cost": 22.0227,
+      "net_pnl": -17.2497,
+      "timestamp": "2026-08-17 10:00:00",
+      "entry_index": 11
+    },
+    {
+      "type": "BUY",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 117.0,
+      "index": 17,
+      "slippage_price": 117.11699999999999
+    },
+    {
+      "type": "FINAL_EXIT",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 121.0,
+      "entry_price": 117.0,
+      "pnl": 4.0,
+      "index": 21,
+      "entry_price_gross": 117.0,
+      "exit_price_gross": 121.0,
+      "effective_entry_price": 117.11699999999999,
+      "effective_exit_price": 120.879,
+      "gross_pnl": 3.762,
+      "total_cost": 22.0238,
+      "net_pnl": -18.2618,
+      "timestamp": "2026-08-22 10:00:00",
+      "entry_index": 17
+    }
+  ],
+  "completed_trades": [
+    {
+      "type": "TAKE_PROFIT",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 110.0,
+      "entry_price": 105.0,
+      "pnl": 5.0,
+      "index": 10,
+      "entry_price_gross": 105.0,
+      "exit_price_gross": 110.0,
+      "effective_entry_price": 105.10499999999999,
+      "effective_exit_price": 109.89,
+      "gross_pnl": 4.785,
+      "total_cost": 22.0215,
+      "net_pnl": -17.2365,
+      "timestamp": "2026-08-11 10:00:00",
+      "entry_index": 5
+    },
+    {
+      "type": "TAKE_PROFIT",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 116.0,
+      "entry_price": 111.0,
+      "pnl": 5.0,
+      "index": 16,
+      "entry_price_gross": 111.0,
+      "exit_price_gross": 116.0,
+      "effective_entry_price": 111.11099999999999,
+      "effective_exit_price": 115.884,
+      "gross_pnl": 4.773,
+      "total_cost": 22.0227,
+      "net_pnl": -17.2497,
+      "timestamp": "2026-08-17 10:00:00",
+      "entry_index": 11
+    },
+    {
+      "type": "FINAL_EXIT",
+      "symbol": "NIFTY",
+      "quantity": 1,
+      "price": 121.0,
+      "entry_price": 117.0,
+      "pnl": 4.0,
+      "index": 21,
+      "entry_price_gross": 117.0,
+      "exit_price_gross": 121.0,
+      "effective_entry_price": 117.11699999999999,
+      "effective_exit_price": 120.879,
+      "gross_pnl": 3.762,
+      "total_cost": 22.0238,
+      "net_pnl": -18.2618,
+      "timestamp": "2026-08-22 10:00:00",
+      "entry_index": 17
+    }
+  ],
+  "performance": {
+    "total_trades": 3,
+    "winning_trades": 0,
+    "losing_trades": 3,
+    "win_rate": 0.0,
+    "gross_profit": 0,
+    "gross_loss": 52.748,
+    "profit_factor": 0.0,
+    "total_pnl": -52.748,
+    "average_trade": -17.5827,
+    "max_drawdown": 52.748,
+    "max_consecutive_wins": 0,
+    "max_consecutive_losses": 3
+  },
+  "daily_pnl": {
+    "2026-08-11": -17.2365,
+    "2026-08-17": -17.2497,
+    "2026-08-22": -18.2618
+  },
+  "monthly_pnl": {
+    "2026-08": -52.748
+  }
+}
