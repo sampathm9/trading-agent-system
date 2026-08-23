@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETED",
+  "symbol": "NIFTY",
+  "trading_date": "2026-08-24",
+  "processed_candles": 76,
+  "trade_count": 25,
+  "realized_pnl": -305.6,
+  "daily_loss": 305.6,
+  "position": null,
+  "events": 161,
+  "entries_stopped": true
+}
