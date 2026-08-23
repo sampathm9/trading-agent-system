@@ -1,3 +1,5 @@
+from datetime import date
+
 from workers.data.market_data_worker import MarketDataWorker
 from workers.trading.trading_cycle_worker import TradingCycleWorker
 from workers.backtest.backtest_worker import BacktestWorker
@@ -13,7 +15,7 @@ class DailyTradingAgent:
         trading_cycle_worker=None,
         backtest_worker=None,
         execution_worker=None,
-        market_calendar=None
+        market_calendar=None,
     ):
 
         self.market_data_worker = (
@@ -44,6 +46,31 @@ class DailyTradingAgent:
         )
 
         self.running = False
+        self.current_date = None
+
+    # -------------------------------------------------
+    # MARKET DATE
+    # -------------------------------------------------
+
+    def set_trading_date(self, trading_date=None):
+
+        if trading_date is None:
+            trading_date = date.today()
+
+        self.current_date = trading_date
+
+        return self.current_date
+
+    def is_market_day(self):
+
+        trading_date = (
+            self.current_date
+            or date.today()
+        )
+
+        return self.market_calendar.is_trading_day(
+            trading_date
+        )
 
     # -------------------------------------------------
     # MARKET DATA
@@ -60,44 +87,6 @@ class DailyTradingAgent:
 
         return self.market_data_worker.latest_price(
             symbol
-        )
-
-    # -------------------------------------------------
-    # MARKET DAY
-    # -------------------------------------------------
-
-    def is_trading_day(self, trading_date=None):
-
-        return self.market_calendar.is_trading_day(
-            trading_date
-        )
-
-    def get_market_day_reason(self, trading_date=None):
-
-        return self.market_calendar.get_market_day_reason(
-            trading_date
-        )
-
-    def is_entry_allowed(
-        self,
-        current_time=None,
-        trading_date=None
-    ):
-
-        return self.market_calendar.is_entry_allowed(
-            current_time=current_time,
-            trading_date=trading_date
-        )
-
-    def is_market_open(
-        self,
-        current_time=None,
-        trading_date=None
-    ):
-
-        return self.market_calendar.is_market_open(
-            current_time=current_time,
-            trading_date=trading_date
         )
 
     # -------------------------------------------------
@@ -125,27 +114,27 @@ class DailyTradingAgent:
         short_period=5,
         long_period=10,
         daily_loss=0.0,
-        trading_date=None,
-        current_time=None
     ):
 
-        if not self.is_trading_day(trading_date):
+        if not self.is_market_day():
+
+            trading_date = (
+                self.current_date
+                or date.today()
+            )
+
+            reason = self.market_calendar.get_market_day_reason(
+                trading_date
+            )
+
+            print(
+                f"[DAILY AGENT] Market closed: {reason}"
+            )
 
             return {
                 "status": "SKIPPED",
-                "reason": self.get_market_day_reason(
-                    trading_date
-                )
-            }
-
-        if not self.is_entry_allowed(
-            current_time=current_time,
-            trading_date=trading_date
-        ):
-
-            return {
-                "status": "SKIPPED",
-                "reason": "ENTRY_NOT_ALLOWED"
+                "reason": reason,
+                "date": str(trading_date),
             }
 
         candles = self.market_data_worker.get_candles(
@@ -156,7 +145,7 @@ class DailyTradingAgent:
 
             return {
                 "status": "NO_DATA",
-                "reason": "NO_MARKET_DATA"
+                "reason": "NO_MARKET_DATA",
             }
 
         price = self.market_data_worker.latest_price(
@@ -173,7 +162,7 @@ class DailyTradingAgent:
             short_period=short_period,
             long_period=long_period,
             daily_loss=daily_loss,
-            position=position
+            position=position,
         )
 
         return result
@@ -198,7 +187,7 @@ class DailyTradingAgent:
             "closing_orders": closing_orders,
             "realized_pnl": (
                 self.execution_worker.broker.get_realized_pnl()
-            )
+            ),
         }
 
     # -------------------------------------------------
@@ -213,7 +202,7 @@ class DailyTradingAgent:
         long_period=10,
         stop_loss_pct=0.02,
         take_profit_pct=0.04,
-        max_daily_loss=None
+        max_daily_loss=None,
     ):
 
         candles = self.market_data_worker.get_candles(
@@ -224,7 +213,7 @@ class DailyTradingAgent:
 
             return {
                 "status": "NO_DATA",
-                "reason": "NO_MARKET_DATA"
+                "reason": "NO_MARKET_DATA",
             }
 
         return self.backtest_worker.run(
@@ -235,21 +224,52 @@ class DailyTradingAgent:
             long_period=long_period,
             stop_loss_pct=stop_loss_pct,
             take_profit_pct=take_profit_pct,
-            max_daily_loss=max_daily_loss
+            max_daily_loss=max_daily_loss,
         )
 
     # -------------------------------------------------
     # LIFECYCLE
     # -------------------------------------------------
 
-    def start(self):
+    def start(self, trading_date=None):
+
+        self.set_trading_date(
+            trading_date
+        )
+
+        if not self.is_market_day():
+
+            reason = self.market_calendar.get_market_day_reason(
+                self.current_date
+            )
+
+            self.running = False
+
+            print(
+                f"[DAILY AGENT] Market closed: {reason}"
+            )
+
+            return {
+                "status": "MARKET_CLOSED",
+                "date": str(self.current_date),
+                "reason": reason,
+            }
 
         self.running = True
 
-        print("[DAILY AGENT] Trading agent started")
+        print(
+            "[DAILY AGENT] Trading agent started"
+        )
+
+        return {
+            "status": "STARTED",
+            "date": str(self.current_date),
+        }
 
     def stop(self):
 
         self.running = False
 
-        print("[DAILY AGENT] Trading agent stopped")
+        print(
+            "[DAILY AGENT] Trading agent stopped"
+        )
