@@ -1,0 +1,135 @@
+{
+  "symbol": "NIFTY",
+  "candles": 40,
+  "training_size": 20,
+  "test_size": 10,
+  "step_size": 10,
+  "cycles": [
+    {
+      "cycle": 1,
+      "training_range": {
+        "start": 0,
+        "end": 20,
+        "candles": 20
+      },
+      "testing_range": {
+        "start": 20,
+        "end": 30,
+        "candles": 10
+      },
+      "best_configuration": {
+        "quantity": 5,
+        "min_ai_confidence": 0.5
+      },
+      "training_metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100085.0,
+        "realized_pnl": 85.0,
+        "return_percentage": 0.08499999999999999,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:19:00",
+            "equity": 100085.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "testing_metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100035.0,
+        "realized_pnl": 35.0,
+        "return_percentage": 0.034999999999999996,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:29:00",
+            "equity": 100035.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "generalization": {
+        "generalization_ratio": 0.411765,
+        "overfitting_detected": true
+      }
+    },
+    {
+      "cycle": 2,
+      "training_range": {
+        "start": 10,
+        "end": 30,
+        "candles": 20
+      },
+      "testing_range": {
+        "start": 30,
+        "end": 40,
+        "candles": 10
+      },
+      "best_configuration": {
+        "quantity": 5,
+        "min_ai_confidence": 0.5
+      },
+      "training_metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100085.0,
+        "realized_pnl": 85.0,
+        "return_percentage": 0.08499999999999999,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:29:00",
+            "equity": 100085.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "testing_metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100035.0,
+        "realized_pnl": 35.0,
+        "return_percentage": 0.034999999999999996,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100035.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "generalization": {
+        "generalization_ratio": 0.411765,
+        "overfitting_detected": true
+      }
+    }
+  ],
+  "summary": {
+    "cycles": 2,
+    "total_training_pnl": 170.0,
+    "total_out_of_sample_pnl": 70.0,
+    "average_out_of_sample_pnl": 35.0,
+    "overfitting_cycles": 2,
+    "overfitting_detected": true
+  }
+}

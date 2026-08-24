@@ -13,15 +13,27 @@ from workers.broker.models import (
 class PaperBroker(BrokerInterface):
 
     def __init__(self):
-        self.positions = {}
+        self._positions = {}
         self.orders = {}
+
+    # ---------------------------------------------------------
+    # CONNECTION
+    # ---------------------------------------------------------
 
     def is_connected(self) -> bool:
         return True
 
-    def place_order(self, order: OrderRequest) -> OrderResult:
+    # ---------------------------------------------------------
+    # PLACE ORDER
+    # ---------------------------------------------------------
+
+    def place_order(
+        self,
+        order: OrderRequest,
+    ) -> OrderResult:
 
         if order.quantity <= 0:
+
             result = OrderResult(
                 order_id=str(uuid4()),
                 symbol=order.symbol,
@@ -33,9 +45,11 @@ class PaperBroker(BrokerInterface):
             )
 
             self.orders[result.order_id] = result
+
             return result
 
         if order.price is None:
+
             result = OrderResult(
                 order_id=str(uuid4()),
                 symbol=order.symbol,
@@ -43,13 +57,16 @@ class PaperBroker(BrokerInterface):
                 quantity=order.quantity,
                 price=None,
                 status=OrderStatus.REJECTED,
-                message="Paper broker requires an execution price",
+                message=(
+                    "Paper broker requires an execution price"
+                ),
             )
 
             self.orders[result.order_id] = result
+
             return result
 
-        current = self.positions.get(
+        current = self._positions.get(
             order.symbol,
             {
                 "quantity": 0,
@@ -62,26 +79,45 @@ class PaperBroker(BrokerInterface):
 
         realized_pnl = None
 
+        # -----------------------------------------------------
+        # BUY
+        # -----------------------------------------------------
+
         if order.side == OrderSide.BUY:
 
-            new_quantity = quantity + order.quantity
+            new_quantity = (
+                quantity + order.quantity
+            )
 
             if new_quantity > 0:
+
                 new_average = (
-                    (quantity * average_price)
-                    + (order.quantity * order.price)
+                    (
+                        quantity * average_price
+                    )
+                    + (
+                        order.quantity
+                        * order.price
+                    )
                 ) / new_quantity
+
             else:
+
                 new_average = 0.0
 
-            self.positions[order.symbol] = {
+            self._positions[order.symbol] = {
                 "quantity": new_quantity,
                 "average_price": new_average,
             }
 
+        # -----------------------------------------------------
+        # SELL
+        # -----------------------------------------------------
+
         else:
 
             if order.quantity > quantity:
+
                 result = OrderResult(
                     order_id=str(uuid4()),
                     symbol=order.symbol,
@@ -89,25 +125,40 @@ class PaperBroker(BrokerInterface):
                     quantity=order.quantity,
                     price=order.price,
                     status=OrderStatus.REJECTED,
-                    message="Cannot sell more than paper position",
+                    message=(
+                        "Cannot sell more than paper position"
+                    ),
                 )
 
                 self.orders[result.order_id] = result
+
                 return result
 
             realized_pnl = (
                 order.price - average_price
             ) * order.quantity
 
-            new_quantity = quantity - order.quantity
+            new_quantity = (
+                quantity - order.quantity
+            )
 
             if new_quantity == 0:
-                self.positions.pop(order.symbol, None)
+
+                self._positions.pop(
+                    order.symbol,
+                    None,
+                )
+
             else:
-                self.positions[order.symbol] = {
+
+                self._positions[order.symbol] = {
                     "quantity": new_quantity,
                     "average_price": average_price,
                 }
+
+        # -----------------------------------------------------
+        # ORDER RESULT
+        # -----------------------------------------------------
 
         result = OrderResult(
             order_id=str(uuid4()),
@@ -124,6 +175,10 @@ class PaperBroker(BrokerInterface):
 
         return result
 
+    # ---------------------------------------------------------
+    # CLOSE ALL POSITIONS
+    # ---------------------------------------------------------
+
     def close_all_positions(
         self,
         prices: dict[str, float],
@@ -131,7 +186,9 @@ class PaperBroker(BrokerInterface):
 
         results = []
 
-        for symbol, position in list(self.positions.items()):
+        for symbol, position in list(
+            self._positions.items()
+        ):
 
             quantity = position["quantity"]
 
@@ -158,8 +215,33 @@ class PaperBroker(BrokerInterface):
 
         return results
 
-    def get_positions(self) -> dict:
-        return dict(self.positions)
+    # ---------------------------------------------------------
+    # POSITIONS
+    # ---------------------------------------------------------
 
-    def get_order_status(self, order_id: str) -> OrderResult | None:
+    def positions(self) -> dict:
+
+        return {
+            symbol: dict(position)
+            for symbol, position
+            in self._positions.items()
+        }
+
+    # ---------------------------------------------------------
+    # GET POSITIONS
+    # ---------------------------------------------------------
+
+    def get_positions(self) -> dict:
+
+        return self.positions()
+
+    # ---------------------------------------------------------
+    # ORDER STATUS
+    # ---------------------------------------------------------
+
+    def get_order_status(
+        self,
+        order_id: str,
+    ) -> OrderResult | None:
+
         return self.orders.get(order_id)
