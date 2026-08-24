@@ -1,0 +1,6 @@
+{"details": {"test": true}, "event_type": "TEST_EVENT", "hash": "e266494f87bc2f7e2be73ffd17d95f98233c70d3808e7c9ca5cf9685834b9137", "sequence": 1}
+{"details": {"live_trading_enabled": false, "paper_only": true}, "event_type": "PHASE29_START", "hash": "a428dc7f13ed2209a826699e770ab38063c33b505d92a6f26a2ea52b63e5bd50", "sequence": 2}
+{"details": {"passed": true}, "event_type": "CONFIGURATION_VALIDATED", "hash": "693e5a3af47f9a9c4cdbac724008a567e81eb312828fc3d5c4a805a3207c024a", "sequence": 3}
+{"details": {"passed": true}, "event_type": "SESSION_AUTHORIZED", "hash": "df715a34ba46df1360e9747d66f293ccdc282e5fc02ca1e7d507b9ec4f695f0e", "sequence": 4}
+{"details": {"passed": true}, "event_type": "RISK_POLICY_VALIDATED", "hash": "cf57c489d4fc7c1724124d518bd5e02535bf82176ff9200a73a5e1f63809942c", "sequence": 5}
+{"details": {"passed": true}, "event_type": "DRIFT_CHECKED", "hash": "9dfb25f427ee077ab114eac4f8229d49a4206b6439618100d0718cdd646dd854", "sequence": 6}

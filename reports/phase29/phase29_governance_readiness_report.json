@@ -1,0 +1,116 @@
+{
+  "phase": 29,
+  "title": "Operational Governance and Compliance",
+  "timestamp": "2026-08-24T05:35:28.064998+00:00",
+  "configuration": {
+    "passed": true,
+    "checks": {
+      "LIVE_TRADING_ENABLED": {
+        "expected": false,
+        "actual": false,
+        "passed": true
+      },
+      "REAL_BROKER_ENABLED": {
+        "expected": false,
+        "actual": false,
+        "passed": true
+      },
+      "PLACE_REAL_ORDERS": {
+        "expected": false,
+        "actual": false,
+        "passed": true
+      },
+      "PAPER_ONLY": {
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      "PHASE29_ENABLED": {
+        "expected": true,
+        "actual": true,
+        "passed": true
+      }
+    },
+    "errors": []
+  },
+  "deployment": {
+    "passed": true,
+    "checks": {
+      "phase20_production_readiness": false,
+      "phase21_execution_certification": false,
+      "phase22_controlled_deployment": false,
+      "phase23_shadow_observation": false,
+      "phase24_live_activation_framework": false,
+      "phase25_canary_operation": false,
+      "phase26_canary_performance": false,
+      "phase27_runtime_orchestration": false,
+      "phase28_observability": false
+    },
+    "verification_mode": "PHASE29_GOVERNANCE",
+    "note": "Historical phase reports are treated as governance inputs. Phase 29 does not activate live trading."
+  },
+  "session": {
+    "authorized": true,
+    "session": "PAPER",
+    "reason": "Approved non-live session."
+  },
+  "risk_policy": {
+    "passed": true,
+    "checks": {
+      "quantity": true,
+      "daily_trades": true,
+      "daily_loss": true,
+      "consecutive_losses": true
+    },
+    "errors": [],
+    "limits": {
+      "max_order_quantity": 100,
+      "max_daily_trades": 100,
+      "max_daily_loss": 5000.0,
+      "max_consecutive_losses": 5
+    }
+  },
+  "drift": {
+    "drift_detected": false,
+    "baseline_hash": "faa7a7ceaac43d38508f893b714de091339821d0f7567fe295b9135a7a839f08",
+    "current_hash": "faa7a7ceaac43d38508f893b714de091339821d0f7567fe295b9135a7a839f08",
+    "passed": true
+  },
+  "emergency_stop": {
+    "passed": true,
+    "blocked_during_stop": true,
+    "recovered_after_reset": true
+  },
+  "audit_integrity": {
+    "passed": true,
+    "event_count": 6,
+    "errors": []
+  },
+  "readiness": {
+    "ready": true,
+    "score": 1.0,
+    "classification": "GOVERNANCE_READY",
+    "passed_checks": 11,
+    "total_checks": 11,
+    "checks": {
+      "configuration_governance": true,
+      "deployment_verification": true,
+      "session_authorization": true,
+      "risk_policy": true,
+      "audit_integrity": true,
+      "configuration_drift": true,
+      "emergency_stop": true,
+      "live_trading_disabled": true,
+      "real_broker_disabled": true,
+      "real_orders_disabled": true,
+      "paper_only": true
+    }
+  },
+  "safety": {
+    "live_trading_enabled": false,
+    "real_broker_enabled": false,
+    "place_real_orders": false,
+    "paper_only": true,
+    "real_orders_placed": 0
+  }
+}
