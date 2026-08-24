@@ -1,0 +1,17 @@
+{"event": "HEALTH_CHECK", "payload": {"component": "historical_data", "healthy": true}, "timestamp": "2026-08-24T05:27:56.149277+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "paper_broker", "healthy": true}, "timestamp": "2026-08-24T05:27:56.165429+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "intelligence", "healthy": true}, "timestamp": "2026-08-24T05:27:56.167618+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "runtime", "healthy": true}, "timestamp": "2026-08-24T05:27:56.168916+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "safety", "healthy": true}, "timestamp": "2026-08-24T05:27:56.170382+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "audit", "healthy": true}, "timestamp": "2026-08-24T05:27:56.172231+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "test_component", "healthy": false}, "timestamp": "2026-08-24T05:27:56.178891+00:00"}
+{"event": "INCIDENT_DETECTED", "payload": {"component": "test_component", "incident_id": "INC-00001", "incident_type": "COMPONENT_FAILURE", "message": "Component 'test_component' reported unhealthy", "recovered": false, "recovery_action": "", "recovery_attempts": 0, "severity": "CRITICAL", "timestamp": "2026-08-24T05:27:56.180181+00:00"}, "timestamp": "2026-08-24T05:27:56.180302+00:00"}
+{"event": "RECOVERY_ATTEMPT", "payload": {"attempts": 1, "component": "test_component", "reason": "RECOVERY_SUCCESSFUL", "recovered": true}, "timestamp": "2026-08-24T05:27:56.181420+00:00"}
+{"event": "PHASE28_START", "payload": {"phase27_ready": true}, "timestamp": "2026-08-24T05:27:56.199065+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "historical_data", "healthy": true}, "timestamp": "2026-08-24T05:27:56.200317+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "paper_broker", "healthy": true}, "timestamp": "2026-08-24T05:27:56.204822+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "intelligence", "healthy": true}, "timestamp": "2026-08-24T05:27:56.208345+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "runtime", "healthy": true}, "timestamp": "2026-08-24T05:27:56.210311+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "safety", "healthy": true}, "timestamp": "2026-08-24T05:27:56.212220+00:00"}
+{"event": "HEALTH_CHECK", "payload": {"component": "audit", "healthy": true}, "timestamp": "2026-08-24T05:27:56.213758+00:00"}
+{"event": "PHASE28_COMPLETE", "payload": {"ready": true, "report": "reports\\phase28\\phase28_observability_report.json"}, "timestamp": "2026-08-24T05:27:56.234550+00:00"}
