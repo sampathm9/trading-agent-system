@@ -1,0 +1,956 @@
+{
+  "symbol": "NIFTY",
+  "candles": 40,
+  "configurations_tested": 25,
+  "results": [
+    {
+      "configuration": {
+        "quantity": 5,
+        "min_ai_confidence": 0.5
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100185.0,
+        "realized_pnl": 185.0,
+        "return_percentage": 0.185,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100185.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 287.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 5,
+          "side": "LONG",
+          "pnl": 185.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 5,
+        "min_ai_confidence": 0.6
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100185.0,
+        "realized_pnl": 185.0,
+        "return_percentage": 0.185,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100185.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 287.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 5,
+          "side": "LONG",
+          "pnl": 185.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 5,
+        "min_ai_confidence": 0.7
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100170.0,
+        "realized_pnl": 170.0,
+        "return_percentage": 0.16999999999999998,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100170.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 272.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 5,
+          "side": "LONG",
+          "pnl": 170.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 5,
+        "min_ai_confidence": 0.8
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100170.0,
+        "realized_pnl": 170.0,
+        "return_percentage": 0.16999999999999998,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100170.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 272.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 5,
+          "side": "LONG",
+          "pnl": 170.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 5,
+        "min_ai_confidence": 0.9
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100170.0,
+        "realized_pnl": 170.0,
+        "return_percentage": 0.16999999999999998,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100170.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 272.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 5,
+          "side": "LONG",
+          "pnl": 170.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 4,
+        "min_ai_confidence": 0.5
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100148.0,
+        "realized_pnl": 148.0,
+        "return_percentage": 0.148,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100148.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 250.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 4,
+          "side": "LONG",
+          "pnl": 148.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 4,
+        "min_ai_confidence": 0.6
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100148.0,
+        "realized_pnl": 148.0,
+        "return_percentage": 0.148,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100148.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 250.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 4,
+          "side": "LONG",
+          "pnl": 148.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 4,
+        "min_ai_confidence": 0.7
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100136.0,
+        "realized_pnl": 136.0,
+        "return_percentage": 0.136,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100136.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 238.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 4,
+          "side": "LONG",
+          "pnl": 136.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 4,
+        "min_ai_confidence": 0.8
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100136.0,
+        "realized_pnl": 136.0,
+        "return_percentage": 0.136,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100136.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 238.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 4,
+          "side": "LONG",
+          "pnl": 136.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 4,
+        "min_ai_confidence": 0.9
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100136.0,
+        "realized_pnl": 136.0,
+        "return_percentage": 0.136,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100136.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 238.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 4,
+          "side": "LONG",
+          "pnl": 136.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 3,
+        "min_ai_confidence": 0.5
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100111.0,
+        "realized_pnl": 111.0,
+        "return_percentage": 0.11100000000000002,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100111.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 213.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 3,
+          "side": "LONG",
+          "pnl": 111.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 3,
+        "min_ai_confidence": 0.6
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100111.0,
+        "realized_pnl": 111.0,
+        "return_percentage": 0.11100000000000002,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100111.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 213.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 3,
+          "side": "LONG",
+          "pnl": 111.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 3,
+        "min_ai_confidence": 0.7
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100102.0,
+        "realized_pnl": 102.0,
+        "return_percentage": 0.10200000000000001,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100102.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 204.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 3,
+          "side": "LONG",
+          "pnl": 102.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 3,
+        "min_ai_confidence": 0.8
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100102.0,
+        "realized_pnl": 102.0,
+        "return_percentage": 0.10200000000000001,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100102.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 204.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 3,
+          "side": "LONG",
+          "pnl": 102.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 3,
+        "min_ai_confidence": 0.9
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100102.0,
+        "realized_pnl": 102.0,
+        "return_percentage": 0.10200000000000001,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100102.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 204.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 3,
+          "side": "LONG",
+          "pnl": 102.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 2,
+        "min_ai_confidence": 0.5
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100074.0,
+        "realized_pnl": 74.0,
+        "return_percentage": 0.074,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100074.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 176.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 2,
+          "side": "LONG",
+          "pnl": 74.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 2,
+        "min_ai_confidence": 0.6
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100074.0,
+        "realized_pnl": 74.0,
+        "return_percentage": 0.074,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100074.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 176.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 2,
+          "side": "LONG",
+          "pnl": 74.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 2,
+        "min_ai_confidence": 0.7
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100068.0,
+        "realized_pnl": 68.0,
+        "return_percentage": 0.068,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100068.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 170.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 2,
+          "side": "LONG",
+          "pnl": 68.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 2,
+        "min_ai_confidence": 0.8
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100068.0,
+        "realized_pnl": 68.0,
+        "return_percentage": 0.068,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100068.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 170.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 2,
+          "side": "LONG",
+          "pnl": 68.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 2,
+        "min_ai_confidence": 0.9
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100068.0,
+        "realized_pnl": 68.0,
+        "return_percentage": 0.068,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100068.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 170.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 2,
+          "side": "LONG",
+          "pnl": 68.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 1,
+        "min_ai_confidence": 0.5
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100037.0,
+        "realized_pnl": 37.0,
+        "return_percentage": 0.037,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100037.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 139.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 1,
+          "side": "LONG",
+          "pnl": 37.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 1,
+        "min_ai_confidence": 0.6
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100037.0,
+        "realized_pnl": 37.0,
+        "return_percentage": 0.037,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100037.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 139.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:02:00",
+          "entry_price": 103.0,
+          "exit_price": 140.0,
+          "quantity": 1,
+          "side": "LONG",
+          "pnl": 37.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 1,
+        "min_ai_confidence": 0.7
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100034.0,
+        "realized_pnl": 34.0,
+        "return_percentage": 0.034,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100034.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 136.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 1,
+          "side": "LONG",
+          "pnl": 34.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 1,
+        "min_ai_confidence": 0.8
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100034.0,
+        "realized_pnl": 34.0,
+        "return_percentage": 0.034,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100034.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 136.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 1,
+          "side": "LONG",
+          "pnl": 34.0
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "quantity": 1,
+        "min_ai_confidence": 0.9
+      },
+      "metrics": {
+        "initial_capital": 100000.0,
+        "final_equity": 100034.0,
+        "realized_pnl": 34.0,
+        "return_percentage": 0.034,
+        "total_trades": 1,
+        "winning_trades": 1,
+        "losing_trades": 0,
+        "win_rate": 1.0,
+        "loss_rate": 0.0,
+        "max_drawdown": 0.0,
+        "equity_curve": [
+          {
+            "timestamp": "2026-08-24T09:39:00",
+            "equity": 100034.0,
+            "drawdown": 0.0
+          }
+        ]
+      },
+      "ranking_score": 136.0,
+      "trades": [
+        {
+          "timestamp": "2026-08-24T09:39:00",
+          "entry_timestamp": "2026-08-24T09:05:00",
+          "entry_price": 106.0,
+          "exit_price": 140.0,
+          "quantity": 1,
+          "side": "LONG",
+          "pnl": 34.0
+        }
+      ]
+    }
+  ],
+  "best_configuration": {
+    "quantity": 5,
+    "min_ai_confidence": 0.5
+  },
+  "best_metrics": {
+    "initial_capital": 100000.0,
+    "final_equity": 100185.0,
+    "realized_pnl": 185.0,
+    "return_percentage": 0.185,
+    "total_trades": 1,
+    "winning_trades": 1,
+    "losing_trades": 0,
+    "win_rate": 1.0,
+    "loss_rate": 0.0,
+    "max_drawdown": 0.0,
+    "equity_curve": [
+      {
+        "timestamp": "2026-08-24T09:39:00",
+        "equity": 100185.0,
+        "drawdown": 0.0
+      }
+    ]
+  },
+  "best_score": 287.0
+}

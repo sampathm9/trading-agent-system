@@ -25,7 +25,9 @@ class IntelligentTradingWorker:
         strategy_worker=None,
         risk_worker=None,
         execution_worker=None,
+        min_ai_confidence=None,
     ):
+
         self.intelligence = (
             intelligence_worker
             or IntelligenceWorker()
@@ -48,6 +50,13 @@ class IntelligentTradingWorker:
                 "Phase 13 requires an ExecutionWorker "
                 "connected to a broker."
             )
+
+        if min_ai_confidence is None:
+            min_ai_confidence = MIN_AI_CONFIDENCE
+
+        self.min_ai_confidence = float(
+            min_ai_confidence
+        )
 
         self.last_intelligence = None
         self.last_strategy = None
@@ -84,32 +93,19 @@ class IntelligentTradingWorker:
 
         ai = intelligence_result["ai"]
 
-        signal = str(ai["signal"]).upper()
+        signal = str(
+            ai["signal"]
+        ).upper()
 
         confidence = float(
             ai["confidence"]
         )
 
-        if confidence < MIN_AI_CONFIDENCE:
+        if confidence < self.min_ai_confidence:
+
             action = "HOLD"
 
         else:
-
-            # Phase 12 AI produces an executable signal:
-            #
-            # BUY
-            # SELL
-            # HOLD
-            # NO_TRADE
-            #
-            # StrategyWorker works with market-direction
-            # terminology:
-            #
-            # BULLISH
-            # BEARISH
-            # SIDEWAYS
-            #
-            # Translate between the two layers.
 
             signal_to_trend = {
                 "BUY": "BULLISH",
@@ -131,7 +127,9 @@ class IntelligentTradingWorker:
             "signal": signal,
             "action": action,
             "confidence": confidence,
-            "score": float(ai["score"]),
+            "score": float(
+                ai["score"]
+            ),
             "reason": ai["explanation"],
         }
 
@@ -190,7 +188,9 @@ class IntelligentTradingWorker:
 
             self.last_execution = {
                 "status": "NO_ORDER",
-                "reason": "Strategy action is not executable",
+                "reason": (
+                    "Strategy action is not executable"
+                ),
             }
 
             return None
@@ -229,7 +229,7 @@ class IntelligentTradingWorker:
         quantity: int,
         price: float,
         news: Optional[Iterable[Dict | str]] = None,
-    ) -> Dict:
+    ):
 
         intelligence = self.analyze_market(
             candles,
@@ -271,6 +271,7 @@ class IntelligentTradingWorker:
         self,
         prices: Dict[str, float],
     ):
+
         return self.execution.close_all(
             prices
         )
@@ -280,4 +281,5 @@ class IntelligentTradingWorker:
     # ---------------------------------------------------------
 
     def positions(self):
+
         return self.execution.positions()
