@@ -1,0 +1,206 @@
+{
+  "generated_at": "2026-08-24T05:16:56.909656Z",
+  "health": {
+    "components": {
+      "historical_data": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "intelligence": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "paper_broker": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase17_walk_forward": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase18_robustness": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase19_paper_validation": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase20_production_readiness": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase21_execution_certification": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase22_deployment": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase23_shadow": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase24_activation": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase25_canary": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase26_rollback": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      }
+    },
+    "healthy": true
+  },
+  "live_trading_enabled": false,
+  "name": "Production Runtime Orchestration",
+  "phase": 27,
+  "preflight": {
+    "component_health": {
+      "historical_data": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "intelligence": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "paper_broker": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase17_walk_forward": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase18_robustness": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase19_paper_validation": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase20_production_readiness": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase21_execution_certification": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase22_deployment": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase23_shadow": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase24_activation": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase25_canary": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      },
+      "phase26_rollback": {
+        "details": {
+          "source": "phase27_runtime"
+        },
+        "healthy": true
+      }
+    },
+    "components_healthy": true,
+    "components_registered": true,
+    "passed": true,
+    "safety": {
+      "failures": [],
+      "safe": true
+    }
+  },
+  "readiness": {
+    "classification": "PAPER_RUNTIME_READY",
+    "ready": true,
+    "score": 1.0
+  },
+  "real_broker_used": false,
+  "real_orders_placed": 0,
+  "runtime": {
+    "candles_processed": 10,
+    "errors": [],
+    "trades_processed": 0
+  },
+  "runtime_state": "STOPPED",
+  "safety": {
+    "failures": [],
+    "safe": true
+  },
+  "state_history": [
+    "CREATED",
+    "PREFLIGHT",
+    "READY",
+    "RUNNING",
+    "EMERGENCY_STOP",
+    "READY",
+    "RUNNING",
+    "STOPPING",
+    "STOPPED"
+  ]
+}
