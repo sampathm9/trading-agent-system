@@ -1,0 +1,493 @@
+{
+  "system": "trading-agent-system",
+  "validation": "master_end_to_end",
+  "phases": "20-30",
+  "started": "2026-08-24T11:30:05",
+  "finished": "2026-08-24T11:30:11",
+  "phase_results": [
+    {
+      "phase": 20,
+      "module": "workers.phase20_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 20 PRODUCTION READINESS INTEGRATION TEST\n============================================================\n\n1. HISTORICAL DATA\n------------------------------------------------------------\nHistorical candles: 40 PASS\n\n2. PAPER BROKER\n------------------------------------------------------------\nPaper broker connected: PASS\n\n3. INTELLIGENCE\n------------------------------------------------------------\nIntelligence pipeline: PASS\nAI signal: BUY\n\n4. PHASE 17 WALK-FORWARD\n------------------------------------------------------------\nPhase 17 report available: PASS\n\n5. PHASE 18 ROBUSTNESS\n------------------------------------------------------------\nPhase 18 report available: PASS\n\n6. PHASE 19 PAPER VALIDATION\n------------------------------------------------------------\nPhase 19 report directory available: PASS\n\n7. PRE-FLIGHT VALIDATION\n------------------------------------------------------------\nPre-flight validation: PASS\n\n8. RUNTIME SAFETY\n------------------------------------------------------------\nPaper-only safety: PASS\nLive trading disabled: PASS\nReal broker orders disabled: PASS\n\n9. HEALTH MONITORING\n------------------------------------------------------------\nAll production components healthy: PASS\n\n10. AUDIT LOGGING\n------------------------------------------------------------\nAudit events: 14 PASS\n\n11. READINESS\n------------------------------------------------------------\nProduction readiness: PASS\nClassification: PAPER_PRODUCTION_READY\nReadiness score: 1.0\n\n12. JSON REPORT\n------------------------------------------------------------\nReport: reports\\phase20\\phase20_production_readiness_report.json PASS\n\n13. SAFETY\n------------------------------------------------------------\nNo real broker orders: PASS\nPaper-only production validation: PASS\nLive trading disabled: PASS\n\n14. FINAL VALIDATION\n------------------------------------------------------------\nHistorical data: PASS\nPaper broker: PASS\nIntelligence: PASS\nPhase 17 report: PASS\nPhase 18 report: PASS\nPhase 19 report: PASS\nPre-flight validation: PASS\nRuntime safety: PASS\nHealth monitoring: PASS\nAudit logging: PASS\nProduction readiness: PASS\nReal broker untouched: PASS\n\n============================================================\nPHASE 20 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 20,
+        "config": "config.phase20_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "ALLOW_LIVE_TRADING",
+        "real_broker_enabled": false,
+        "real_broker_source": "ALLOW_REAL_BROKER_ORDERS",
+        "place_real_orders": false,
+        "real_orders_source": "DEFAULT_FALSE",
+        "paper_mode": true,
+        "paper_mode_source": "RUNTIME_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 20,
+        "passed": true,
+        "json_reports": [
+          "phase20_production_readiness_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 21,
+      "module": "workers.phase21_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 21 BROKER EXECUTION CERTIFICATION INTEGRATION TEST\n============================================================\n\n1. PAPER BROKER\n------------------------------------------------------------\nPaper broker connected: PASS\n\n2. EXECUTION SAFETY CONFIGURATION\n------------------------------------------------------------\nPaper mode: PASS\nLive trading disabled: PASS\nReal broker orders disabled: PASS\nLive broker disabled: PASS\n\n3. ORDER VALIDATION\n------------------------------------------------------------\nValid order contract: PASS\nQuantity limit enforcement: PASS\n\n4. IDEMPOTENCY\n------------------------------------------------------------\nFirst order key accepted: PASS\nDuplicate order blocked: PASS\n\n5. KILL SWITCH\n------------------------------------------------------------\nNormal execution allowed: PASS\nEmergency shutdown blocks execution: PASS\nKill switch recovery: PASS\n\n6. BROKER HEALTH\n------------------------------------------------------------\nBroker health check: PASS\n\n7. POSITION RECONCILIATION\n------------------------------------------------------------\nPosition reconciliation: PASS\n\n8. EXECUTION GATE\n------------------------------------------------------------\nExecution gate certification: PASS\n\n9. AUDIT LOGGING\n------------------------------------------------------------\nExecution audit logging: PASS\n\n10. PHASE 21 CERTIFICATION\n------------------------------------------------------------\nExecution certification: PASS\nReal orders placed: 0\n\n11. JSON REPORT\n------------------------------------------------------------\nReport: reports\\phase21\\phase21_execution_certification_report.json PASS\n\n12. SAFETY\n------------------------------------------------------------\nLive trading disabled: PASS\nReal broker disabled: PASS\nNo real broker orders: PASS\n\n13. FINAL VALIDATION\n------------------------------------------------------------\nPaper broker: PASS\nPaper mode: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nLive broker disabled: PASS\nOrder validation: PASS\nDuplicate protection: PASS\nKill switch: PASS\nBroker health: PASS\nPosition reconciliation: PASS\nExecution gate: PASS\nExecution certification: PASS\nReal orders untouched: PASS\n\n============================================================\nPHASE 21 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 21,
+        "config": "config.phase21_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "ALLOW_LIVE_TRADING",
+        "real_broker_enabled": false,
+        "real_broker_source": "ALLOW_REAL_BROKER_ORDERS",
+        "place_real_orders": false,
+        "real_orders_source": "DEFAULT_FALSE",
+        "paper_mode": true,
+        "paper_mode_source": "RUNTIME_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 21,
+        "passed": true,
+        "json_reports": [
+          "phase21_execution_certification_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 22,
+      "module": "workers.phase22_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 22 CONTROLLED DEPLOYMENT INTEGRATION TEST\n============================================================\n\n1. HISTORICAL DATA\n------------------------------------------------------------\nHistorical candles: 40 PASS\n\n2. PAPER BROKER\n------------------------------------------------------------\nPaper broker connected: PASS\n\n3. INTELLIGENCE\n------------------------------------------------------------\nIntelligence pipeline: PASS\nAI signal: BUY\n\n4. PHASE 22 DEPLOYMENT\n------------------------------------------------------------\nDeployment worker: PASS\n\n5. CONFIGURATION\n------------------------------------------------------------\nConfiguration validation: PASS\n\n6. DEPLOYMENT GATE\n------------------------------------------------------------\nDeployment gate: PASS\n\n7. HEALTH\n------------------------------------------------------------\nProduction component health: PASS\n\n8. ORDER LIMITS\n------------------------------------------------------------\nOrder limits: PASS\n\n9. LIVE TRADING SAFETY\n------------------------------------------------------------\nPaper-only mode: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal orders placed: 0 PASS\n\n10. READINESS\n------------------------------------------------------------\nDeployment readiness: PASS\nClassification: PAPER_DEPLOYMENT_READY\nReadiness score: 1.0\n\n11. JSON REPORT\n------------------------------------------------------------\nReport: reports\\phase22\\phase22_deployment_readiness_report.json PASS\n\n12. AUDIT\n------------------------------------------------------------\nDeployment audit logging: PASS\n\n13. FINAL SAFETY\n------------------------------------------------------------\nNo real broker orders: PASS\nPaper broker untouched: PASS\nLive trading disabled: PASS\n\n============================================================\nPHASE 22 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 22,
+        "config": "config.phase22_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "DEFAULT_FALSE",
+        "paper_mode": true,
+        "paper_mode_source": "PAPER_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 22,
+        "passed": true,
+        "json_reports": [
+          "phase22_deployment_readiness_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 23,
+      "module": "workers.phase23_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 23 SHADOW TRADING / LIVE MARKET OBSERVATION INTEGRATION TEST\n============================================================\n\n1. MARKET DATA\n------------------------------------------------------------\nObserved candles: 26 PASS\nHistorical candle validation: PASS\n\n2. INTELLIGENCE\n------------------------------------------------------------\nIntelligence pipeline: PASS\nAI signal: BUY\nAI signal generated: PASS\n\n3. PHASE 23 SHADOW SESSION\n------------------------------------------------------------\nShadow worker: PASS: PASS\n\n4. MARKET OBSERVATION\n------------------------------------------------------------\nCandles observed: 26 PASS\nObservation count: PASS\n\n5. VIRTUAL TRADING\n------------------------------------------------------------\nVirtual trades: 3 PASS\nVirtual trade accounting: PASS\n\n6. VIRTUAL P&L\n------------------------------------------------------------\nVirtual P&L: 9.0\nVirtual P&L calculated: PASS\n\n7. SAFETY\n------------------------------------------------------------\nShadow mode: PASS\nReal orders disabled: PASS\nReal broker unused: PASS\nShadow mode: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal orders disabled: PASS\nReal orders placed: PASS\nReal broker unused: PASS\n\n8. SHADOW READINESS\n------------------------------------------------------------\nShadow observation readiness: PASS\nClassification: SHADOW_OBSERVATION_READY\nReadiness score: 1.0\nShadow readiness: PASS\n\n9. JSON REPORT\n------------------------------------------------------------\nReport: reports\\phase23\\phase23_shadow_observation_report.json PASS\nReport exists: PASS\nReport valid JSON: PASS\n\n10. FINAL VALIDATION\n------------------------------------------------------------\nMarket data: PASS\nIntelligence: PASS\nShadow worker: PASS\nObservation: PASS\nVirtual trading: PASS\nVirtual P&L: PASS\nSafety: PASS\nReadiness: PASS\nJSON report: PASS\nReal broker untouched: PASS\nReal orders untouched: PASS\n\n============================================================\nPHASE 23 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 23,
+        "config": "config.phase23_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 23,
+        "passed": true,
+        "json_reports": [
+          "phase23_shadow_observation_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 24,
+      "module": "workers.phase24_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 24 CONTROLLED LIVE ACTIVATION INTEGRATION TEST\n============================================================\n\n1. HISTORICAL DATA\n------------------------------------------------------------\nHistorical candles: 40 PASS\n\n2. PAPER BROKER\n------------------------------------------------------------\nPaper broker connected: PASS\n\n3. INTELLIGENCE\n------------------------------------------------------------\nIntelligence pipeline: PASS\nAI signal: BUY\n\n4. PHASE 24 ACTIVATION\n------------------------------------------------------------\nConfiguration validation: PASS\nPhase 23 readiness: PASS\nBroker authorization: PASS\nPosition reconciliation: PASS\nRuntime health: PASS\n\n5. LIVE TRADING SAFETY\n------------------------------------------------------------\nShadow mode enabled: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal orders disabled: PASS\n\n6. ACTIVATION GATE\n------------------------------------------------------------\nActivation blocked by default: PASS\n\n7. EMERGENCY SHUTDOWN\n------------------------------------------------------------\nEmergency shutdown active: PASS\nExecution blocked: PASS\n\n8. RECOVERY\n------------------------------------------------------------\nEmergency shutdown recovered: PASS\nSafety gates recovered: PASS\n\n9. READINESS\n------------------------------------------------------------\nActivation readiness: True\nClassification: LIVE_CANARY_READY\nReadiness score: 1.0\n\n10. JSON REPORT\n------------------------------------------------------------\nReport: reports\\phase24\\phase24_live_activation_readiness_report.json PASS\nReport valid JSON: PASS\n\n11. FINAL SAFETY\n------------------------------------------------------------\nNo real broker orders: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal order placement disabled: PASS\n\n============================================================\nPHASE 24 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 24,
+        "config": "config.phase24_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 24,
+        "passed": true,
+        "json_reports": [
+          "phase24_live_activation_readiness_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 25,
+      "module": "workers.phase25_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 25 CONTROLLED CANARY OPERATION INTEGRATION TEST\n============================================================\n\n1. MARKET DATA\n------------------------------------------------------------\nObserved candles: 20 PASS\n\n2. PAPER BROKER\n------------------------------------------------------------\nPaper broker connected: PASS\n\n3. INTELLIGENCE\n------------------------------------------------------------\nIntelligence pipeline: PASS\nAI signal: BUY\n\n4. PHASE 25 CANARY OPERATION\n------------------------------------------------------------\nCanary worker: PASS\nObservations: 18 PASS\n\n5. HEALTH MONITORING\n------------------------------------------------------------\nHealth monitoring: PASS\nHealth score: 1.0 PASS\n\n6. CANARY LIMITS\n------------------------------------------------------------\nCanary limits: PASS\n\n7. ALERT ENGINE\n------------------------------------------------------------\nAlert engine: PASS\nActive alerts: 0 PASS\n\n8. SAFETY\n------------------------------------------------------------\nCanary mode: PASS\nPaper-only mode: PASS\nShadow mode: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal orders disabled: PASS\n\n9. READINESS\n------------------------------------------------------------\nCanary operation readiness: True PASS\nClassification: CANARY_OPERATION_READY\nReadiness score: 1.0\n\n10. FINAL EVALUATION\n------------------------------------------------------------\nControlled canary certification: PASS\nClassification: CONTROLLED_CANARY_READY\nCertification score: 1.0\n\n11. JSON REPORT\n------------------------------------------------------------\nReport: reports\\phase25\\phase25_canary_operation_report.json PASS\nReport valid JSON: PASS\n\n12. FINAL SAFETY\n------------------------------------------------------------\nNo real broker orders: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal order placement disabled: PASS\n\n============================================================\nPHASE 25 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 25,
+        "config": "config.phase25_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 25,
+        "passed": true,
+        "json_reports": [
+          "phase25_canary_operation_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 26,
+      "module": "workers.phase26_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 26 CANARY PERFORMANCE VALIDATION / AUTOMATIC ROLLBACK INTEGRATION TEST\n============================================================\n\n1. MARKET OBSERVATIONS\n------------------------------------------------------------\nObservations: 20 PASS\n\n2. CANARY TRADES\n------------------------------------------------------------\nCanary trades: 5 PASS\n\n3. EXECUTION\n------------------------------------------------------------\nExecution observations: 3 PASS\n\n4. HEALTH\n------------------------------------------------------------\nCanary health: PASS\n\n5. SAFETY\n------------------------------------------------------------\nCanary safety configuration: PASS\n\n6. PERFORMANCE VALIDATION\n------------------------------------------------------------\nPerformance validation: PASS\nProfitable trade rate: 0.8\nExpectancy: 7.2\n\n7. RISK VALIDATION\n------------------------------------------------------------\nRisk validation: PASS\n\n8. EXECUTION VALIDATION\n------------------------------------------------------------\nExecution validation: PASS\n\n9. HEALTH VALIDATION\n------------------------------------------------------------\nHealth validation: PASS\n\n10. SAFETY VALIDATION\n------------------------------------------------------------\nSafety validation: PASS\n\n11. ROLLBACK ENGINE\n------------------------------------------------------------\nRollback required: False\nAutomatic rollback: PASS\n\n12. READINESS\n------------------------------------------------------------\nCanary readiness: True\nClassification: CANARY_CONTINUE\nReadiness score: 1.0\n\n13. DEPLOYMENT STATE\n------------------------------------------------------------\nDeployment state: CANARY_CONTINUE\n\n14. ROLLBACK SAFETY TEST\n------------------------------------------------------------\nFailure detection: PASS\nAutomatic rollback triggered: PASS\nUnsafe deployment blocked: PASS\n\n15. REAL TRADING SAFETY\n------------------------------------------------------------\nReal orders placed: 0 PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\n\n16. JSON REPORT\n------------------------------------------------------------\nReport: reports\\phase26\\phase26_canary_performance_report.json PASS\nReport valid JSON: PASS\n\n============================================================\nPHASE 26 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 26,
+        "config": "config.phase26_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 26,
+        "passed": true,
+        "json_reports": [
+          "phase26_canary_performance_report.json",
+          "phase26_deployment_state.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 27,
+      "module": "workers.phase27_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 27 PRODUCTION RUNTIME ORCHESTRATION INTEGRATION TEST\n============================================================\n\n1. CONFIGURATION\n------------------------------------------------------------\nPhase 27 enabled: PASS\nShadow mode enabled: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal orders disabled: PASS\nRuntime activation disabled: PASS\n\n2. COMPONENT REGISTRATION\n------------------------------------------------------------\nRequired components registered: PASS\nAll components healthy: PASS\n\n3. PREFLIGHT\n------------------------------------------------------------\nPreflight validation: PASS\nSafety validation: PASS\nComponent health: PASS\n\n4. RUNTIME START\n------------------------------------------------------------\nRuntime start: PASS\nRuntime running: PASS\n\n5. RUNTIME PROCESSING\n------------------------------------------------------------\nRuntime candle processing: PASS\nRuntime processed candles: PASS\n\n6. HEALTH MONITORING\n------------------------------------------------------------\nRuntime health: PASS\n\n7. EMERGENCY SHUTDOWN\n------------------------------------------------------------\nEmergency stop state: PASS\nEmergency safety active: PASS\nProcessing blocked: PASS\n\n8. RECOVERY\n------------------------------------------------------------\nEmergency recovery: PASS\nRuntime ready after recovery: PASS\n\n9. CONTROLLED RESTART\n------------------------------------------------------------\nRuntime restart: PASS\nRuntime running after recovery: PASS\n\n10. CONTROLLED STOP\n------------------------------------------------------------\nRuntime stop: PASS\nRuntime stopped: PASS\n\n11. JSON REPORT\n------------------------------------------------------------\nReport generated: PASS\nReport valid JSON: PASS\nReadiness classification: PASS\n\n12. FINAL SAFETY\n------------------------------------------------------------\nNo real broker used: PASS\nReal orders placed: PASS\nLive trading disabled: PASS\nShadow mode: PASS\n\n============================================================\nPHASE 27 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 27,
+        "config": "config.phase27_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": true,
+        "paper_mode_source": "RUNTIME_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 27,
+        "passed": true,
+        "json_reports": [
+          "phase27_runtime_orchestration_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 28,
+      "module": "workers.phase28_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 28 PRODUCTION OBSERVABILITY / INCIDENT RECOVERY INTEGRATION TEST\n============================================================\n\n1. CONFIGURATION\n------------------------------------------------------------\nPhase 28 configuration: : PASS\n\n2. OBSERVABILITY WORKER\n------------------------------------------------------------\nWorker initialization: : PASS\n\n3. SAFETY\n------------------------------------------------------------\nLive trading disabled: : PASS\nReal broker disabled: : PASS\nReal orders disabled: : PASS\nExecution safety: : PASS\n\n4. HEALTH MONITORING\n------------------------------------------------------------\nRequired components: : PASS\nHealthy components: : PASS\nAll components healthy: : PASS\n\n5. INCIDENT DETECTION\n------------------------------------------------------------\nIncident detection: : PASS\n\n6. AUTOMATIC RECOVERY\n------------------------------------------------------------\nRecovery attempted: : PASS\nRecovery successful: : PASS\n\n7. SAFETY INCIDENT PROTECTION\n------------------------------------------------------------\nUnsafe configuration detected: : PASS\n\n8. READINESS\n------------------------------------------------------------\nObservability readiness: : PASS\nClassification: OBSERVABILITY_READY\nReadiness score: 1.0\n\n9. JSON REPORT\n------------------------------------------------------------\nReport exists: : PASS\nReport valid JSON: : PASS\n\n10. AUDIT LOGGING\n------------------------------------------------------------\nAudit log exists: : PASS\n\n11. FINAL SAFETY\n------------------------------------------------------------\nNo real broker orders: : PASS\nLive trading disabled: : PASS\nReal broker disabled: : PASS\nReal order placement disabled: : PASS\nSafety gate passed: : PASS\n\n============================================================\nPHASE 28 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 28,
+        "config": "config.phase28_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 28,
+        "passed": true,
+        "json_reports": [
+          "phase28_observability_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 29,
+      "module": "workers.phase29_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 29 OPERATIONAL GOVERNANCE & COMPLIANCE INTEGRATION TEST\n============================================================\n\n1. CONFIGURATION\n------------------------------------------------------------\nPhase 29 configuration: PASS\n\n2. CONFIGURATION GOVERNANCE\n------------------------------------------------------------\nConfiguration governance: PASS\n\n3. DEPLOYMENT VERIFICATION\n------------------------------------------------------------\nDeployment verification: PASS\n\n4. SESSION AUTHORIZATION\n------------------------------------------------------------\nPaper session authorization: PASS\nLIVE session blocked: PASS\n\n5. RISK POLICY\n------------------------------------------------------------\nNormal risk policy: PASS\nQuantity limit enforcement: PASS\n\n6. AUDIT INTEGRITY\n------------------------------------------------------------\nAudit integrity: PASS\n\n7. CONFIGURATION DRIFT\n------------------------------------------------------------\nNo configuration drift: PASS\nConfiguration drift detection: PASS\n\n8. EMERGENCY STOP\n------------------------------------------------------------\nEmergency stop verification: PASS\n\n9. FULL GOVERNANCE RUN\n------------------------------------------------------------\nGovernance worker: PASS\nGovernance readiness score: 1.0\nClassification: GOVERNANCE_READY\n\n10. SAFETY\n------------------------------------------------------------\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal orders disabled: PASS\nPaper-only mode: PASS\nReal orders placed: 0: PASS\n\n11. JSON REPORT\n------------------------------------------------------------\nReport exists: PASS\nReport valid JSON: PASS\n\n12. AUDIT LOG\n------------------------------------------------------------\nAudit log exists: PASS\n\n13. FINAL VALIDATION\n------------------------------------------------------------\nConfiguration: PASS\nGovernance: PASS\nDeployment verification: PASS\nSession authorization: PASS\nLIVE blocked: PASS\nRisk policy: PASS\nRisk limits: PASS\nAudit integrity: PASS\nDrift detection: PASS\nEmergency stop: PASS\nGovernance readiness: PASS\nReal broker untouched: PASS\nReal orders untouched: PASS\n\n============================================================\nPHASE 29 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 29,
+        "config": "config.phase29_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 29,
+        "passed": true,
+        "json_reports": [
+          "phase29_governance_readiness_report.json"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "phase": 30,
+      "module": "workers.phase30_integration_test",
+      "return_code": 0,
+      "integration_test": true,
+      "output_tail": "============================================================\nPHASE 30 PRODUCTION SESSION CONTROL AND FINAL RELEASE CERTIFICATION\n============================================================\n\n1. CONFIGURATION\n------------------------------------------------------------\nPhase 30 configuration: PASS\n\n2. SAFETY\n------------------------------------------------------------\nPaper mode: PASS\nShadow mode: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal orders disabled: PASS\n\n3. PREVIOUS PHASE VERIFICATION\n------------------------------------------------------------\nRequired Phase 23-29 reports: PASS\nPhase 23 report: PASS\nPhase 24 report: PASS\nPhase 25 report: PASS\nPhase 26 report: PASS\nPhase 27 report: PASS\nPhase 28 report: PASS\nPhase 29 report: PASS\n\n4. FINAL RELEASE GATE\n------------------------------------------------------------\nRelease gate: PASS\nRelease classification: FINAL_RELEASE_CERTIFIED\nRelease score: 1.0\n\n5. PRODUCTION SESSION CONTROL\n------------------------------------------------------------\nPaper session start: PASS\nSession trade gate: PASS\nTrade accounting: PASS\n\n6. EMERGENCY STOP\n------------------------------------------------------------\nEmergency stop blocks execution: PASS\nEmergency stop recovery: PASS\n\n7. FULL RELEASE WORKER\n------------------------------------------------------------\nRelease worker: PASS\nReadiness classification: FINAL_RELEASE_CERTIFIED\nReadiness score: 1.0\n\n8. JSON REPORT\n------------------------------------------------------------\nReport exists: PASS\nReport valid JSON: PASS\n\n9. FINAL SAFETY\n------------------------------------------------------------\nNo real broker orders: PASS\nLive trading disabled: PASS\nReal broker disabled: PASS\nReal order placement disabled: PASS\n\n============================================================\nPHASE 30 INTEGRATION TEST PASSED\n============================================================\n",
+      "safety": {
+        "phase": 30,
+        "config": "config.phase30_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": true,
+        "paper_mode_source": "PAPER_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      "json_report": {
+        "phase": 30,
+        "passed": true,
+        "json_reports": [
+          "phase30_release_certification_report.json"
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "final_safety": {
+    "passed": true,
+    "phases": [
+      {
+        "phase": 20,
+        "config": "config.phase20_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "ALLOW_LIVE_TRADING",
+        "real_broker_enabled": false,
+        "real_broker_source": "ALLOW_REAL_BROKER_ORDERS",
+        "place_real_orders": false,
+        "real_orders_source": "DEFAULT_FALSE",
+        "paper_mode": true,
+        "paper_mode_source": "RUNTIME_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 21,
+        "config": "config.phase21_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "ALLOW_LIVE_TRADING",
+        "real_broker_enabled": false,
+        "real_broker_source": "ALLOW_REAL_BROKER_ORDERS",
+        "place_real_orders": false,
+        "real_orders_source": "DEFAULT_FALSE",
+        "paper_mode": true,
+        "paper_mode_source": "RUNTIME_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 22,
+        "config": "config.phase22_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "DEFAULT_FALSE",
+        "paper_mode": true,
+        "paper_mode_source": "PAPER_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 23,
+        "config": "config.phase23_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 24,
+        "config": "config.phase24_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 25,
+        "config": "config.phase25_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 26,
+        "config": "config.phase26_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 27,
+        "config": "config.phase27_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": true,
+        "paper_mode_source": "RUNTIME_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 28,
+        "config": "config.phase28_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 29,
+        "config": "config.phase29_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": null,
+        "paper_mode_source": null,
+        "missing_safety_flags": [],
+        "passed": true
+      },
+      {
+        "phase": 30,
+        "config": "config.phase30_config",
+        "live_trading_enabled": false,
+        "live_trading_source": "LIVE_TRADING_ENABLED",
+        "real_broker_enabled": false,
+        "real_broker_source": "REAL_BROKER_ENABLED",
+        "place_real_orders": false,
+        "real_orders_source": "PLACE_REAL_ORDERS",
+        "paper_mode": true,
+        "paper_mode_source": "PAPER_MODE",
+        "missing_safety_flags": [],
+        "passed": true
+      }
+    ]
+  },
+  "real_orders": 0,
+  "live_trading_enabled": false,
+  "real_broker_enabled": false,
+  "master_passed": true,
+  "master_result": "MASTER_VALIDATION_PASSED"
+}
