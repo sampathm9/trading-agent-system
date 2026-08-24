@@ -1,0 +1,87 @@
+{
+  "phase": 21,
+  "name": "Broker Execution Certification & Kill-Switch Layer",
+  "runtime_mode": "PAPER",
+  "live_trading_enabled": false,
+  "real_broker_orders_enabled": false,
+  "live_broker_enabled": false,
+  "broker_health": {
+    "healthy": true,
+    "reason": "Broker connected."
+  },
+  "position_reconciliation": {
+    "reconciled": true,
+    "differences": []
+  },
+  "execution_gate": {
+    "authorized": true,
+    "reason": "Execution gate passed.",
+    "checks": [
+      {
+        "name": "paper_mode",
+        "passed": true
+      },
+      {
+        "name": "live_execution_disabled",
+        "passed": true
+      },
+      {
+        "name": "kill_switch",
+        "passed": true
+      },
+      {
+        "name": "broker_health",
+        "passed": true
+      },
+      {
+        "name": "order_validation",
+        "passed": true
+      },
+      {
+        "name": "session_limits",
+        "passed": true
+      },
+      {
+        "name": "idempotency",
+        "passed": true
+      }
+    ],
+    "order_validation": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "symbol",
+          "passed": true
+        },
+        {
+          "name": "quantity",
+          "passed": true,
+          "value": 1
+        },
+        {
+          "name": "price",
+          "passed": true,
+          "value": 100.0
+        },
+        {
+          "name": "side",
+          "passed": true,
+          "value": "BUY"
+        },
+        {
+          "name": "order_value",
+          "passed": true,
+          "value": 100.0
+        }
+      ],
+      "order_value": 100.0
+    }
+  },
+  "kill_switch": {
+    "enabled": true,
+    "active": false,
+    "reason": ""
+  },
+  "real_orders_placed": 0,
+  "certified": true
+}
