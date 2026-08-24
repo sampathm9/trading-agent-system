@@ -1,0 +1,333 @@
+{
+  "phase": 23,
+  "name": "Shadow Trading / Live Market Observation",
+  "symbol": "NIFTY",
+  "candles": 26,
+  "observations": [
+    {
+      "action": "OBSERVE",
+      "price": 100.0,
+      "reason": "INSUFFICIENT_HISTORY"
+    },
+    {
+      "action": "OBSERVE",
+      "price": 101.0,
+      "reason": "INSUFFICIENT_HISTORY"
+    },
+    {
+      "price": 102.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": false,
+      "action": "SHADOW_BUY",
+      "virtual_order": {
+        "action": "SHADOW_BUY",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 102.0,
+        "value": 102.0,
+        "timestamp": "2026-08-24T09:17:00",
+        "reason": "PHASE23_SHADOW_ENTRY"
+      }
+    },
+    {
+      "price": 103.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 104.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 105.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 104.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": true,
+      "action": "SHADOW_SELL",
+      "virtual_order": {
+        "action": "SHADOW_SELL",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "entry_price": 102.0,
+        "exit_price": 104.0,
+        "realized_pnl": 2.0,
+        "timestamp": "2026-08-24T09:21:00",
+        "reason": "PHASE23_SHADOW_EXIT"
+      }
+    },
+    {
+      "price": 103.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": false,
+      "action": "HOLD"
+    },
+    {
+      "price": 102.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": false,
+      "action": "HOLD"
+    },
+    {
+      "price": 101.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": false,
+      "action": "HOLD"
+    },
+    {
+      "price": 100.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": false,
+      "action": "HOLD"
+    },
+    {
+      "price": 101.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": false,
+      "action": "SHADOW_BUY",
+      "virtual_order": {
+        "action": "SHADOW_BUY",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 101.0,
+        "value": 101.0,
+        "timestamp": "2026-08-24T09:26:00",
+        "reason": "PHASE23_SHADOW_ENTRY"
+      }
+    },
+    {
+      "price": 102.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 103.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 104.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 105.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 106.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 105.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": true,
+      "action": "SHADOW_SELL",
+      "virtual_order": {
+        "action": "SHADOW_SELL",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "entry_price": 101.0,
+        "exit_price": 105.0,
+        "realized_pnl": 4.0,
+        "timestamp": "2026-08-24T09:32:00",
+        "reason": "PHASE23_SHADOW_EXIT"
+      }
+    },
+    {
+      "price": 104.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": false,
+      "action": "HOLD"
+    },
+    {
+      "price": 103.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": false,
+      "action": "HOLD"
+    },
+    {
+      "price": 102.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": false,
+      "action": "HOLD"
+    },
+    {
+      "price": 101.0,
+      "signal": "SELL",
+      "confidence": 0.8,
+      "score": -1.0,
+      "reason": "Negative price momentum",
+      "position_open": false,
+      "action": "HOLD"
+    },
+    {
+      "price": 102.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": false,
+      "action": "SHADOW_BUY",
+      "virtual_order": {
+        "action": "SHADOW_BUY",
+        "symbol": "NIFTY",
+        "quantity": 1,
+        "price": 102.0,
+        "value": 102.0,
+        "timestamp": "2026-08-24T09:37:00",
+        "reason": "PHASE23_SHADOW_ENTRY"
+      }
+    },
+    {
+      "price": 103.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 104.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    },
+    {
+      "price": 105.0,
+      "signal": "BUY",
+      "confidence": 0.8,
+      "score": 1.0,
+      "reason": "Positive price momentum",
+      "position_open": true,
+      "action": "HOLD"
+    }
+  ],
+  "market": {
+    "candles_observed": 26,
+    "last_price": 105.0
+  },
+  "summary": {
+    "symbol": "NIFTY",
+    "candles_observed": 26,
+    "observations": 27,
+    "signals": 24,
+    "buy_signals": 14,
+    "sell_signals": 10,
+    "rejected_signals": 0,
+    "initial_capital": 100000.0,
+    "realized_pnl": 9.0,
+    "unrealized_pnl": 0.0,
+    "total_pnl": 9.0,
+    "position_quantity": 0,
+    "position_symbol": null,
+    "entry_price": null,
+    "trades": 3,
+    "winning_trades": 3,
+    "losing_trades": 0,
+    "consecutive_losses": 0,
+    "max_consecutive_losses": 0,
+    "safety": {
+      "shadow_only": true,
+      "real_orders_allowed": false,
+      "real_broker_used": false
+    }
+  },
+  "readiness": {
+    "ready": true,
+    "score": 1.0,
+    "classification": "SHADOW_OBSERVATION_READY",
+    "checks": {
+      "shadow_mode": true,
+      "real_orders_disabled": true,
+      "real_broker_unused": true,
+      "candles_observed": true
+    }
+  },
+  "safety": {
+    "allowed": true,
+    "checks": {
+      "shadow_mode": true,
+      "live_trading_disabled": true,
+      "real_broker_disabled": true,
+      "real_orders_disabled": true
+    }
+  },
+  "real_orders_placed": 0,
+  "real_broker_used": false
+}
