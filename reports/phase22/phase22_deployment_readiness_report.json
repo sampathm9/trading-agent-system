@@ -1,0 +1,63 @@
+{
+  "phase": 22,
+  "name": "Controlled Deployment and Live Trading Gate",
+  "symbol": "NIFTY",
+  "quantity": 1,
+  "environment": "PAPER",
+  "configuration": {
+    "valid": true,
+    "errors": [],
+    "environment": "PAPER",
+    "paper_mode": true,
+    "live_trading_enabled": false,
+    "real_broker_enabled": false
+  },
+  "deployment_gate": {
+    "allowed": true,
+    "reason": "Deployment gate opened"
+  },
+  "health": {
+    "healthy": true,
+    "checks": {
+      "broker_connected": true,
+      "intelligence_available": true
+    }
+  },
+  "order_limit": {
+    "allowed": true,
+    "reason": "Order quantity within limit"
+  },
+  "live_gate": {
+    "allowed": false,
+    "reasons": [
+      "Live trading disabled by configuration",
+      "Real broker disabled by configuration",
+      "Explicit live confirmation missing"
+    ],
+    "live_trading_enabled": false,
+    "real_broker_enabled": false,
+    "explicit_confirmation": false,
+    "kill_switch": false
+  },
+  "readiness": {
+    "ready": true,
+    "score": 1.0,
+    "classification": "PAPER_DEPLOYMENT_READY",
+    "checks": {
+      "configuration_valid": true,
+      "deployment_gate": true,
+      "broker_healthy": true,
+      "order_limits_valid": true,
+      "live_trading_blocked": true
+    },
+    "passed": 5,
+    "total": 5
+  },
+  "real_orders_placed": 0,
+  "safety": {
+    "paper_only": true,
+    "live_trading_enabled": false,
+    "real_broker_enabled": false,
+    "real_orders_placed": 0
+  }
+}
