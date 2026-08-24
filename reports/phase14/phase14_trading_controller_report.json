@@ -1,0 +1,158 @@
+{
+  "phase": 14,
+  "name": "Trading Controller and Safety Gateway",
+  "paper_only": true,
+  "cycles": [
+    {
+      "cycle": 1,
+      "session": "PRE_MARKET",
+      "status": "BLOCKED",
+      "reason": "Trading session does not permit orders",
+      "execution": null
+    },
+    {
+      "cycle": 2,
+      "session": "MARKET_OPEN",
+      "status": "EXECUTED",
+      "intelligence": {
+        "technical": {
+          "price": 140.0,
+          "sma_fast": 138.0,
+          "sma_slow": 135.5,
+          "ema_fast": 138.0,
+          "ema_slow": 135.5,
+          "rsi": 100.0,
+          "atr": 2.0,
+          "momentum": 3.7037037037037033,
+          "volatility": 0.0158931940357874,
+          "trend_score": 1.0,
+          "direction": "BULLISH"
+        },
+        "regime": {
+          "regime": "BULL_TREND",
+          "volatility_state": "LOW",
+          "momentum_state": "POSITIVE",
+          "trend_score": 1.0
+        },
+        "sentiment": {
+          "score": 1.0,
+          "label": "POSITIVE",
+          "articles": 2,
+          "positive_hits": 5,
+          "negative_hits": 0
+        },
+        "ai": {
+          "signal": "BUY",
+          "score": 1.0,
+          "confidence": 1.0,
+          "technical_score": 1.0,
+          "regime_score": 1.0,
+          "sentiment_score": 1.0,
+          "explanation": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=POSITIVE; RSI=100.00; momentum=3.70%."
+        }
+      },
+      "strategy": {
+        "signal": "BUY",
+        "action": "BUY",
+        "confidence": 1.0,
+        "score": 1.0,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=POSITIVE; RSI=100.00; momentum=3.70%."
+      },
+      "risk": {
+        "approved": true,
+        "action": "BUY",
+        "quantity": 1,
+        "reason": "Trade approved"
+      },
+      "safety": {
+        "approved": true,
+        "reason": "Safety gateway approved"
+      },
+      "execution": "OrderResult(order_id='77b1ffc8-9c9c-495f-8f3a-059ab230b656', symbol='NIFTY', side=<OrderSide.BUY: 'BUY'>, quantity=1, price=100.0, status=<OrderStatus.FILLED: 'FILLED'>, message='Paper order filled', realized_pnl=None)"
+    },
+    {
+      "cycle": 3,
+      "session": "MARKET_OPEN",
+      "status": "BLOCKED",
+      "reason": "Quantity exceeds Phase 14 limit",
+      "intelligence": {
+        "technical": {
+          "price": 140.0,
+          "sma_fast": 138.0,
+          "sma_slow": 135.5,
+          "ema_fast": 138.0,
+          "ema_slow": 135.5,
+          "rsi": 100.0,
+          "atr": 2.0,
+          "momentum": 3.7037037037037033,
+          "volatility": 0.0158931940357874,
+          "trend_score": 1.0,
+          "direction": "BULLISH"
+        },
+        "regime": {
+          "regime": "BULL_TREND",
+          "volatility_state": "LOW",
+          "momentum_state": "POSITIVE",
+          "trend_score": 1.0
+        },
+        "sentiment": {
+          "score": 1.0,
+          "label": "POSITIVE",
+          "articles": 2,
+          "positive_hits": 5,
+          "negative_hits": 0
+        },
+        "ai": {
+          "signal": "BUY",
+          "score": 1.0,
+          "confidence": 1.0,
+          "technical_score": 1.0,
+          "regime_score": 1.0,
+          "sentiment_score": 1.0,
+          "explanation": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=POSITIVE; RSI=100.00; momentum=3.70%."
+        }
+      },
+      "strategy": {
+        "signal": "BUY",
+        "action": "BUY",
+        "confidence": 1.0,
+        "score": 1.0,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=POSITIVE; RSI=100.00; momentum=3.70%."
+      },
+      "risk": {
+        "approved": false,
+        "action": "BUY",
+        "quantity": 999,
+        "reason": "Trade rejected by risk controls"
+      },
+      "safety": {
+        "approved": false,
+        "reason": "Quantity exceeds Phase 14 limit"
+      },
+      "execution": null
+    },
+    {
+      "cycle": 4,
+      "session": "CLOSED",
+      "status": "BLOCKED",
+      "reason": "Trading session does not permit orders",
+      "execution": null
+    }
+  ],
+  "final_positions": {},
+  "session": "CLOSED",
+  "validation": {
+    "market_data": true,
+    "paper_broker": true,
+    "pre_market_block": true,
+    "intelligence_pipeline": true,
+    "strategy": true,
+    "risk": true,
+    "safety_gateway": true,
+    "paper_execution": true,
+    "position_tracking": true,
+    "eod_exit": true,
+    "post_eod_block": true,
+    "real_broker_untouched": true
+  }
+}
