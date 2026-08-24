@@ -1,10 +1,13 @@
 from workers.backtest.backtest_worker import BacktestWorker
+
 from workers.costs.trading_cost_worker import (
     TradingCostWorker
 )
+
 from workers.historical.phase3_data_validator import (
     Phase3DataValidator
 )
+
 from workers.analytics.performance_worker import (
     PerformanceWorker
 )
@@ -17,7 +20,6 @@ class RealisticBacktestWorker:
         decision_worker=None,
         cost_worker=None
     ):
-
         self.backtest_worker = BacktestWorker(
             decision_worker=decision_worker
         )
@@ -27,20 +29,15 @@ class RealisticBacktestWorker:
             or TradingCostWorker()
         )
 
-        self.validator = (
-            Phase3DataValidator()
-        )
+        self.validator = Phase3DataValidator()
 
-        self.performance = (
-            PerformanceWorker()
-        )
+        self.performance = PerformanceWorker()
 
     def _get_timestamp(
         self,
         candle,
         index
     ):
-
         return (
             candle.get("timestamp")
             or candle.get("datetime")
@@ -59,7 +56,6 @@ class RealisticBacktestWorker:
         take_profit_pct=0.04,
         max_daily_loss=None
     ):
-
         validation = self.validator.validate(
             candles
         )
@@ -87,35 +83,23 @@ class RealisticBacktestWorker:
 
         for trade in raw_trades:
 
-            trade_copy = dict(
-                trade
-            )
+            trade_copy = dict(trade)
 
-            trade_type = trade.get(
-                "type"
-            )
-
-            price = trade.get(
-                "price"
-            )
-
-            index = trade.get(
-                "index"
-            )
+            trade_type = trade.get("type")
+            price = trade.get("price")
+            index = trade.get("index")
 
             if trade_type == "BUY":
 
-                entry_price = float(
-                    price
-                )
+                entry_price = float(price)
 
                 entry_index = index
 
-                trade_copy[
-                    "slippage_price"
-                ] = self.cost_worker.apply_slippage(
-                    price,
-                    "BUY"
+                trade_copy["slippage_price"] = (
+                    self.cost_worker.apply_slippage(
+                        price,
+                        "BUY"
+                    )
                 )
 
                 processed_trades.append(
@@ -132,9 +116,7 @@ class RealisticBacktestWorker:
 
                 if entry_price is not None:
 
-                    exit_price = float(
-                        price
-                    )
+                    exit_price = float(price)
 
                     effective_entry = (
                         self.cost_worker.apply_slippage(
@@ -158,56 +140,52 @@ class RealisticBacktestWorker:
                         )
                     )
 
-                    trade_copy[
-                        "entry_price_gross"
-                    ] = entry_price
-
-                    trade_copy[
-                        "exit_price_gross"
-                    ] = exit_price
-
-                    trade_copy[
-                        "effective_entry_price"
-                    ] = effective_entry
-
-                    trade_copy[
-                        "effective_exit_price"
-                    ] = effective_exit
-
-                    trade_copy[
-                        "gross_pnl"
-                    ] = cost_result[
-                        "gross_pnl"
-                    ]
-
-                    trade_copy[
-                        "total_cost"
-                    ] = cost_result[
-                        "total_cost"
-                    ]
-
-                    trade_copy[
-                        "net_pnl"
-                    ] = cost_result[
-                        "net_pnl"
-                    ]
-
-                    trade_copy[
-                        "timestamp"
-                    ] = self._get_timestamp(
-                        candles[index]
-                        if isinstance(
-                            index,
-                            int
-                        )
-                        and index < len(candles)
-                        else {},
-                        index
+                    trade_copy["entry_price_gross"] = (
+                        entry_price
                     )
 
-                    trade_copy[
-                        "entry_index"
-                    ] = entry_index
+                    trade_copy["exit_price_gross"] = (
+                        exit_price
+                    )
+
+                    trade_copy["effective_entry_price"] = (
+                        effective_entry
+                    )
+
+                    trade_copy["effective_exit_price"] = (
+                        effective_exit
+                    )
+
+                    trade_copy["gross_pnl"] = (
+                        cost_result["gross_pnl"]
+                    )
+
+                    trade_copy["total_cost"] = (
+                        cost_result["total_cost"]
+                    )
+
+                    trade_copy["net_pnl"] = (
+                        cost_result["net_pnl"]
+                    )
+
+                    if (
+                        isinstance(index, int)
+                        and index < len(candles)
+                    ):
+                        candle = candles[index]
+                    else:
+                        candle = {}
+
+                    trade_copy["timestamp"] = (
+                        self._get_timestamp(
+                            candle,
+                            index
+                        )
+                    )
+
+                    trade_copy["entry_index"] = (
+                        entry_index
+                    )
 
                     processed_trades.append(
                         trade_copy
@@ -222,31 +200,23 @@ class RealisticBacktestWorker:
             if "net_pnl" in trade
         ]
 
-        metrics = (
-            self.performance.analyze(
-                completed
-            )
+        metrics = self.performance.analyze(
+            completed
         )
 
-        daily = (
-            self.performance.daily_pnl(
-                completed
-            )
+        daily = self.performance.daily_pnl(
+            completed
         )
 
-        monthly = (
-            self.performance.monthly_pnl(
-                completed
-            )
+        monthly = self.performance.monthly_pnl(
+            completed
         )
 
         return {
             "status": "COMPLETED",
             "symbol": symbol,
             "quantity": quantity,
-            "total_candles": len(
-                candles
-            ),
+            "total_candles": len(candles),
             "validation": validation,
             "raw_result": result,
             "trades": processed_trades,
