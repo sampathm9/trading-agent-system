@@ -1,0 +1,168 @@
+{
+  "phase": 24,
+  "title": "Controlled Live Activation and Canary Governance",
+  "historical_candles": 40,
+  "paper_broker": true,
+  "readiness": {
+    "configuration": {
+      "valid": true,
+      "errors": []
+    },
+    "phase23": {
+      "ready": true,
+      "classification": "{'READY': TRUE, 'SCORE': 1.0, 'CLASSIFICATION': 'SHADOW_OBSERVATION_READY', 'CHECKS': {'SHADOW_MODE': TRUE, 'REAL_ORDERS_DISABLED': TRUE, 'REAL_BROKER_UNUSED': TRUE, 'CANDLES_OBSERVED': TRUE}}",
+      "report": "reports\\phase23\\phase23_shadow_observation_report.json"
+    },
+    "broker": {
+      "authorized": true,
+      "broker_type": "PaperBroker",
+      "paper_broker": true,
+      "reason": "Paper broker accepted"
+    },
+    "health": {
+      "healthy": true,
+      "checks": 1,
+      "errors": 0,
+      "failures": []
+    },
+    "reconciliation": {
+      "reconciled": true,
+      "mismatches": [],
+      "actual_positions": {}
+    },
+    "canary": {
+      "allowed": true,
+      "failures": []
+    },
+    "safety": {
+      "allowed": true,
+      "primary_gate": true,
+      "secondary_gate": true
+    },
+    "safety_configuration": {
+      "shadow_mode": true,
+      "live_trading_enabled": false,
+      "real_broker_enabled": false,
+      "place_real_orders": false
+    },
+    "readiness": {
+      "ready": true,
+      "score": 1.0,
+      "classification": "LIVE_CANARY_READY",
+      "checks": {
+        "configuration": true,
+        "phase23": true,
+        "broker": true,
+        "position_reconciliation": true,
+        "health": true,
+        "canary_limits": true,
+        "safety": true
+      }
+    }
+  },
+  "activation_test": {
+    "activation": {
+      "allowed": false,
+      "activated": false,
+      "attempt": 1,
+      "failures": [
+        "Explicit activation not provided",
+        "Manual approval not provided",
+        "Shadow mode is enabled",
+        "Live trading is disabled",
+        "Real broker is disabled",
+        "Real order placement is disabled"
+      ]
+    },
+    "readiness": {
+      "configuration": {
+        "valid": true,
+        "errors": []
+      },
+      "phase23": {
+        "ready": true,
+        "classification": "{'READY': TRUE, 'SCORE': 1.0, 'CLASSIFICATION': 'SHADOW_OBSERVATION_READY', 'CHECKS': {'SHADOW_MODE': TRUE, 'REAL_ORDERS_DISABLED': TRUE, 'REAL_BROKER_UNUSED': TRUE, 'CANDLES_OBSERVED': TRUE}}",
+        "report": "reports\\phase23\\phase23_shadow_observation_report.json"
+      },
+      "broker": {
+        "authorized": true,
+        "broker_type": "PaperBroker",
+        "paper_broker": true,
+        "reason": "Paper broker accepted"
+      },
+      "health": {
+        "healthy": true,
+        "checks": 2,
+        "errors": 0,
+        "failures": []
+      },
+      "reconciliation": {
+        "reconciled": true,
+        "mismatches": [],
+        "actual_positions": {}
+      },
+      "canary": {
+        "allowed": true,
+        "failures": []
+      },
+      "safety": {
+        "allowed": true,
+        "primary_gate": true,
+        "secondary_gate": true
+      },
+      "safety_configuration": {
+        "shadow_mode": true,
+        "live_trading_enabled": false,
+        "real_broker_enabled": false,
+        "place_real_orders": false
+      },
+      "readiness": {
+        "ready": true,
+        "score": 1.0,
+        "classification": "LIVE_CANARY_READY",
+        "checks": {
+          "configuration": true,
+          "phase23": true,
+          "broker": true,
+          "position_reconciliation": true,
+          "health": true,
+          "canary_limits": true,
+          "safety": true
+        }
+      }
+    }
+  },
+  "shutdown_test": {
+    "shutdown": {
+      "active": true,
+      "reason": "Phase 24 integration safety test"
+    },
+    "safety": {
+      "allowed": false,
+      "reason": "Emergency shutdown active"
+    },
+    "rollback": {
+      "rollback": true,
+      "reason": "Phase 24 integration safety test"
+    }
+  },
+  "recovery_test": {
+    "shutdown": {
+      "active": false,
+      "reason": "Emergency shutdown cleared"
+    },
+    "safety": {
+      "allowed": true,
+      "reason": "Safety gates recovered"
+    },
+    "rollback": {
+      "rollback": false,
+      "reason": "Rollback cleared"
+    }
+  },
+  "real_orders_placed": 0,
+  "live_trading_enabled": false,
+  "real_broker_enabled": false,
+  "place_real_orders": false,
+  "classification": "LIVE_CANARY_READY"
+}
