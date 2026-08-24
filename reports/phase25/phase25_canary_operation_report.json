@@ -1,0 +1,386 @@
+{
+  "status": "COMPLETED",
+  "observations": [
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:17:00",
+        "open": 101.5,
+        "high": 103.0,
+        "low": 101.0,
+        "close": 102.0,
+        "volume": 1020
+      },
+      "signal": {
+        "signal": "NO_TRADE",
+        "confidence": 0.5,
+        "score": 0.0,
+        "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%. AI confidence 0.5000 is below minimum required 0.6000."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:18:00",
+        "open": 102.5,
+        "high": 104.0,
+        "low": 102.0,
+        "close": 103.0,
+        "volume": 1030
+      },
+      "signal": {
+        "signal": "NO_TRADE",
+        "confidence": 0.5,
+        "score": 0.0,
+        "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%. AI confidence 0.5000 is below minimum required 0.6000."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:19:00",
+        "open": 103.5,
+        "high": 105.0,
+        "low": 103.0,
+        "close": 104.0,
+        "volume": 1040
+      },
+      "signal": {
+        "signal": "NO_TRADE",
+        "confidence": 0.5,
+        "score": 0.0,
+        "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%. AI confidence 0.5000 is below minimum required 0.6000."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:20:00",
+        "open": 102.5,
+        "high": 104.0,
+        "low": 102.0,
+        "close": 103.0,
+        "volume": 1050
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.00%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:21:00",
+        "open": 104.5,
+        "high": 106.0,
+        "low": 104.0,
+        "close": 105.0,
+        "volume": 1060
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.96%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:22:00",
+        "open": 105.5,
+        "high": 107.0,
+        "low": 105.0,
+        "close": 106.0,
+        "volume": 1070
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.92%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:23:00",
+        "open": 106.5,
+        "high": 108.0,
+        "low": 106.0,
+        "close": 107.0,
+        "volume": 1080
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.88%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:24:00",
+        "open": 107.5,
+        "high": 109.0,
+        "low": 107.0,
+        "close": 108.0,
+        "volume": 1090
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.85%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:25:00",
+        "open": 106.5,
+        "high": 108.0,
+        "low": 106.0,
+        "close": 107.0,
+        "volume": 1100
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.88%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:26:00",
+        "open": 108.5,
+        "high": 110.0,
+        "low": 108.0,
+        "close": 109.0,
+        "volume": 1110
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.81%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:27:00",
+        "open": 109.5,
+        "high": 111.0,
+        "low": 109.0,
+        "close": 110.0,
+        "volume": 1120
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.77%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:28:00",
+        "open": 110.5,
+        "high": 112.0,
+        "low": 110.0,
+        "close": 111.0,
+        "volume": 1130
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.75,
+        "score": 0.5625,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=3.74%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:29:00",
+        "open": 111.5,
+        "high": 113.0,
+        "low": 111.0,
+        "close": 112.0,
+        "volume": 1140
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.8333333333333333,
+        "score": 0.75,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=87.50; momentum=3.70%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:30:00",
+        "open": 110.5,
+        "high": 112.0,
+        "low": 110.0,
+        "close": 111.0,
+        "volume": 1150
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.8333333333333333,
+        "score": 0.75,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=81.25; momentum=3.74%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:31:00",
+        "open": 112.5,
+        "high": 114.0,
+        "low": 112.0,
+        "close": 113.0,
+        "volume": 1160
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.8333333333333333,
+        "score": 0.75,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=82.35; momentum=3.67%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:32:00",
+        "open": 113.5,
+        "high": 115.0,
+        "low": 113.0,
+        "close": 114.0,
+        "volume": 1170
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.8333333333333333,
+        "score": 0.75,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=82.35; momentum=3.64%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:33:00",
+        "open": 114.5,
+        "high": 116.0,
+        "low": 114.0,
+        "close": 115.0,
+        "volume": 1180
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.8333333333333333,
+        "score": 0.75,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=82.35; momentum=3.60%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    },
+    {
+      "candle": {
+        "timestamp": "2026-08-24T09:34:00",
+        "open": 115.5,
+        "high": 117.0,
+        "low": 115.0,
+        "close": 116.0,
+        "volume": 1190
+      },
+      "signal": {
+        "signal": "BUY",
+        "confidence": 0.8333333333333333,
+        "score": 0.75,
+        "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=88.24; momentum=3.57%."
+      },
+      "real_order_placed": false,
+      "live_execution": false
+    }
+  ],
+  "health": {
+    "healthy": true,
+    "score": 1.0,
+    "checks": {
+      "broker": true,
+      "intelligence": true,
+      "position_reconciliation": true,
+      "safety": true,
+      "audit": true
+    }
+  },
+  "limits": {
+    "allowed": true,
+    "reason": "CANARY_LIMITS_OK"
+  },
+  "alerts": {
+    "alert_count": 0,
+    "alerts": [],
+    "healthy": true
+  },
+  "safety": {
+    "allowed": true,
+    "reason": "CANARY_SAFETY_OK",
+    "checks": {
+      "canary_mode": true,
+      "paper_only": true,
+      "shadow_mode": true,
+      "live_trading_disabled": true,
+      "real_broker_disabled": true,
+      "real_orders_disabled": true
+    }
+  },
+  "readiness": {
+    "ready": true,
+    "score": 1.0,
+    "classification": "CANARY_OPERATION_READY",
+    "checks": {
+      "configuration_safe": true,
+      "health": true,
+      "broker": true,
+      "reconciliation": true,
+      "alerts_clear": true,
+      "observations": true
+    }
+  },
+  "real_orders_placed": 0,
+  "certification": {
+    "ready": true,
+    "score": 1.0,
+    "classification": "CONTROLLED_CANARY_READY",
+    "checks": {
+      "safety": true,
+      "health": true,
+      "readiness": true,
+      "real_orders_zero": true
+    }
+  }
+}
