@@ -1,0 +1,354 @@
+{
+  "phase": 19,
+  "name": "Paper Trading / Forward Validation",
+  "symbol": "NIFTY",
+  "candles": 22,
+  "quantity": 1,
+  "min_ai_confidence": 0.5,
+  "paper_only": true,
+  "broker": "PaperBroker",
+  "safety": {
+    "broker_check": {
+      "allowed": true,
+      "reason": "Paper broker accepted.",
+      "broker": "PaperBroker"
+    },
+    "real_broker_allowed": false,
+    "real_orders_allowed": false,
+    "paper_only": true
+  },
+  "events": [
+    {
+      "action": "WARMUP",
+      "reason": "Waiting for at least 3 candles for technical analysis.",
+      "candles_available": 1,
+      "candles_required": 3,
+      "price": 102.0
+    },
+    {
+      "action": "WARMUP",
+      "reason": "Waiting for at least 3 candles for technical analysis.",
+      "candles_available": 2,
+      "candles_required": 3,
+      "price": 104.0
+    },
+    {
+      "price": 106.0,
+      "signal": "HOLD",
+      "confidence": 0.5,
+      "score": 0.0,
+      "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 108.0,
+      "signal": "HOLD",
+      "confidence": 0.5,
+      "score": 0.0,
+      "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 110.0,
+      "signal": "HOLD",
+      "confidence": 0.5,
+      "score": 0.0,
+      "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 112.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.80%.",
+      "action": "BUY_REJECTED",
+      "order_id": "a9fdf3a5-41d6-48e4-98a4-db7aedb5fcd9",
+      "status": "OrderStatus.FILLED",
+      "message": "Paper order filled"
+    },
+    {
+      "price": 114.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.62%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 116.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.43%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 118.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.26%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 120.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.09%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 122.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=8.93%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 124.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=8.77%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 126.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=8.62%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 128.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=8.47%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 130.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=8.33%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 132.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=8.20%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 134.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=8.06%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 136.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.94%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 138.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.81%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 140.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.69%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 142.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.58%.",
+      "action": "HOLD"
+    },
+    {
+      "price": 144.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.46%.",
+      "action": "HOLD"
+    }
+  ],
+  "exit_events": [],
+  "metrics": {
+    "initial_capital": 100000.0,
+    "realized_pnl": 0.0,
+    "ending_capital": 100000.0,
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "win_rate": 0.0,
+    "max_consecutive_losses": 0
+  },
+  "signals": [
+    {
+      "price": 106.0,
+      "signal": "HOLD",
+      "confidence": 0.5,
+      "score": 0.0,
+      "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%."
+    },
+    {
+      "price": 108.0,
+      "signal": "HOLD",
+      "confidence": 0.5,
+      "score": 0.0,
+      "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%."
+    },
+    {
+      "price": 110.0,
+      "signal": "HOLD",
+      "confidence": 0.5,
+      "score": 0.0,
+      "reason": "Signal=HOLD; technical=NEUTRAL; regime=RANGING; sentiment=NEUTRAL; RSI=50.00; momentum=0.00%."
+    },
+    {
+      "price": 112.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.80%."
+    },
+    {
+      "price": 114.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.62%."
+    },
+    {
+      "price": 116.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.43%."
+    },
+    {
+      "price": 118.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.26%."
+    },
+    {
+      "price": 120.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=9.09%."
+    },
+    {
+      "price": 122.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=8.93%."
+    },
+    {
+      "price": 124.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=8.77%."
+    },
+    {
+      "price": 126.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=8.62%."
+    },
+    {
+      "price": 128.0,
+      "signal": "BUY",
+      "confidence": 0.75,
+      "score": 0.5625,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=50.00; momentum=8.47%."
+    },
+    {
+      "price": 130.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=8.33%."
+    },
+    {
+      "price": 132.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=8.20%."
+    },
+    {
+      "price": 134.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=8.06%."
+    },
+    {
+      "price": 136.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.94%."
+    },
+    {
+      "price": 138.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.81%."
+    },
+    {
+      "price": 140.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.69%."
+    },
+    {
+      "price": 142.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.58%."
+    },
+    {
+      "price": 144.0,
+      "signal": "BUY",
+      "confidence": 0.8333333333333333,
+      "score": 0.75,
+      "reason": "Signal=BUY; technical=BULLISH; regime=BULL_TREND; sentiment=NEUTRAL; RSI=100.00; momentum=7.46%."
+    }
+  ],
+  "trades": [],
+  "remaining_positions": {}
+}
