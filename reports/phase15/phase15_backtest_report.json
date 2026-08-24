@@ -1,0 +1,34 @@
+{
+  "symbol": "NIFTY",
+  "candles": 40,
+  "trades": [
+    {
+      "timestamp": "2026-08-24T09:39:00",
+      "entry_timestamp": "2026-08-24T09:02:00",
+      "entry_price": 103.0,
+      "exit_price": 140.0,
+      "quantity": 1,
+      "side": "LONG",
+      "pnl": 37.0
+    }
+  ],
+  "metrics": {
+    "initial_capital": 100000.0,
+    "final_equity": 100037.0,
+    "realized_pnl": 37.0,
+    "return_percentage": 0.037,
+    "total_trades": 1,
+    "winning_trades": 1,
+    "losing_trades": 0,
+    "win_rate": 1.0,
+    "loss_rate": 0.0,
+    "max_drawdown": 0.0,
+    "equity_curve": [
+      {
+        "timestamp": "2026-08-24T09:39:00",
+        "equity": 100037.0,
+        "drawdown": 0.0
+      }
+    ]
+  }
+}
