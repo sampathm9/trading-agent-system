@@ -1,0 +1,18 @@
+{
+  "state": "ROLLED_BACK",
+  "live_trading_enabled": false,
+  "real_broker_enabled": false,
+  "real_orders": 0,
+  "rollback": {
+    "rollback_required": true,
+    "rollback_triggered": true,
+    "reason": "PERFORMANCE_FAILURE,RISK_FAILURE,EXECUTION_FAILURE,HEALTH_FAILURE",
+    "failure_reasons": [
+      "PERFORMANCE_FAILURE",
+      "RISK_FAILURE",
+      "EXECUTION_FAILURE",
+      "HEALTH_FAILURE"
+    ],
+    "timestamp": "2026-08-24T05:10:14.256013"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "phase": 26,
+  "symbol": "NIFTY",
+  "observations": 20,
+  "trades": 5,
+  "performance": {
+    "passed": true,
+    "trade_count": 5,
+    "profitable_trades": 4,
+    "profitable_trade_rate": 0.8,
+    "realized_pnl": 36.0,
+    "expectancy": 7.2,
+    "drawdown": 50.0,
+    "checks": {
+      "daily_loss": true,
+      "drawdown": true,
+      "profitable_trade_rate": true,
+      "expectancy": true
+    }
+  },
+  "risk": {
+    "passed": true,
+    "trade_count": 5,
+    "consecutive_losses": 1,
+    "checks": {
+      "trade_limit": true,
+      "consecutive_losses": true
+    }
+  },
+  "execution": {
+    "passed": true,
+    "orders": 3,
+    "rejected_orders": 0,
+    "execution_failures": 0,
+    "checks": {
+      "rejected_orders": true,
+      "execution_failures": true
+    }
+  },
+  "health": {
+    "passed": true,
+    "healthy": true,
+    "failures": 0,
+    "checks": {
+      "healthy": true,
+      "failure_limit": true
+    }
+  },
+  "safety": {
+    "passed": true,
+    "checks": {
+      "canary_mode": true,
+      "live_trading_enabled": true,
+      "real_broker_enabled": true,
+      "place_real_orders": true,
+      "auto_live_activation_enabled": true
+    },
+    "real_orders_allowed": false
+  },
+  "rollback": {
+    "rollback_required": false,
+    "rollback_triggered": false,
+    "reason": "",
+    "failure_reasons": [],
+    "timestamp": "2026-08-24T05:10:14.235395"
+  },
+  "readiness": {
+    "ready": true,
+    "score": 1.0,
+    "classification": "CANARY_CONTINUE",
+    "checks": {
+      "performance": true,
+      "risk": true,
+      "execution": true,
+      "health": true,
+      "safety": true,
+      "minimum_observations": true,
+      "minimum_trades": true,
+      "rollback_not_required": true
+    }
+  },
+  "deployment_state": "CANARY_CONTINUE",
+  "real_orders": 0,
+  "live_trading_enabled": false,
+  "real_broker_enabled": false,
+  "state_file": "reports\\phase26\\phase26_deployment_state.json"
+}
